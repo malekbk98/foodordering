@@ -151,6 +151,13 @@
                                 <div class="nav-item">
                                     <a href="pages/widget-statistic.html" class="menu-item">Statistic</a>
                                 </div>
+                                <div class="nav-lavel">Product</div>
+                                <div class="nav-item">
+                                    <a href="pages/approve_product.php" class="menu-item">Approve Product</a>
+                                </div>
+                                <div class="nav-item">
+                                    <a href="pages/product-statistic.php" class="menu-item">Availbel Product</a>
+                                </div>
                                 <div class="nav-lavel">Statistic</div>
                                 <div class="nav-item">
                                     <a href="pages/product-statistic.php" class="menu-item">Product</a>
