@@ -72,31 +72,17 @@ include 'dbconnexion.php';
             $pwd = $_POST['password'];
             $phone = $_POST['phone'];
             $adress = $_POST['adresse'];
-            /*if(empty($name)||empty($email)||empty($pwd)||empty($phone)||empty($email)){
-                header("location:../Custumor_signup.php?error=emptyfields$name=".$name."$email=".$email);
-                exit();}*/
             
-           if (!preg_match("#[a-zA-Z]+#", $_POST['name'])) {
+            if (!preg_match("#[a-zA-Z]+#", $_POST['name'])) {
                 header("location:../Custumor_signup.php?error=emptyfields$name=".$name."$email=".$email);
                 exit();
              }
-                $req= $conx->prepare('SELECT * FROM customer WHERE email =:param_email');
-                $req->bindParam(':param_email', $email); 
-                $req->execute();  
-               if ($req->rowCount()== 0) { 
-                $req=$conx->preapre("INSERT INTO customer (name,email,pwd,phone,adress) VALUES ( :param_name,:param_email,:param_pwd,:param_phone,:param_adress)"); 
-                $req->bindParam(':param_name',$name);
-                $req->bindParam(':param_email',$email);
-                $req->bindParam(':param_pwd',$pwd);
-                $req->bindParam(':param_phone',$phone);
-                $req->bindParam(':param_adress',$adress);
-                $req->execute();
-                header("location:Custumor_login.php");
-                }else{
-                    echo "erreur";
-                }
-          
-        }
+            
+
+            $conx->exec("INSERT INTO customer(name,email,pwd,phone,adress) VALUES ('$name','$email','$pwd','$phone','$adress')");
+            header("Location: Customer_login.php"); 
+			exit();   
+         }   
 ?>
   </div>
                     </div>

@@ -51,9 +51,7 @@ include 'dbconnexion.php';
          if (isset($_POST['submit'])){ 
             $email = $_POST['email'];
             $pwd = $_POST['password'];
-            $req= $conx->prepare('SELECT * FROM customer WHERE email =:param_email');
-            $req->bindParam(':param_email', $email); 
-            $req->execute();  
+            $req= $conx->query("SELECT * FROM customer WHERE email='$email'");
             if ($req->rowCount()>0){
                 while($data = $req->fetch()){
                     if($data['pwd']==$pwd){
