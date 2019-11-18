@@ -1,4 +1,5 @@
 <?php
+//
         include 'dbconnexion.php';
             $email = $_POST['email'];
             $pwd = $_POST['password'];
