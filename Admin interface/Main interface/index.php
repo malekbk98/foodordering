@@ -156,7 +156,7 @@
                                     <a href="pages/approve_product.php" class="menu-item">Approve Product</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="pages/product-statistic.php" class="menu-item">Availbel Product</a>
+                                    <a href="pages/availbel_product.php" class="menu-item">Availbel Product</a>
                                 </div>
                                 <div class="nav-lavel">Statistic</div>
                                 <div class="nav-item">
