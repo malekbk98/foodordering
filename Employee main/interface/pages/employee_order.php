@@ -1,28 +1,31 @@
 <!doctype html>
 <html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Widget Data | ThemeKit - Admin Template</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="icon" href="../favicon.ico" type="image/x-icon" />
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add employee</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+        
+        <link rel="stylesheet" href="../plugins/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="../plugins/ionicons/dist/css/ionicons.min.css">
+        <link rel="stylesheet" href="../plugins/icon-kit/dist/css/iconkit.min.css">
+        <link rel="stylesheet" href="../plugins/perfect-scrollbar/css/perfect-scrollbar.css">
+        <link rel="stylesheet" href="../plugins/weather-icons/css/weather-icons.min.css">
+        <link rel="stylesheet" href="../plugins/owl.carousel/dist/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="../plugins/owl.carousel/dist/assets/owl.theme.default.min.css">
+        <link rel="stylesheet" href="../plugins/chartist/dist/chartist.min.css">
+        <link rel="stylesheet" href="../dist/css/theme.min.css">
+        <script src="../src/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
 
-    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
-
-    <link rel="stylesheet" href="../plugins/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="../plugins/ionicons/dist/css/ionicons.min.css">
-    <link rel="stylesheet" href="../plugins/icon-kit/dist/css/iconkit.min.css">
-    <link rel="stylesheet" href="../plugins/perfect-scrollbar/css/perfect-scrollbar.css">
-    <link rel="stylesheet" href="../dist/css/theme.min.css">
-    <script src="../src/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
-
-<body>
+    <body>
         <div class="wrapper">
             <header class="header-top" header-theme="light">
                 <div class="container-fluid">
@@ -49,8 +52,8 @@
                                                 <i class="ik ik-check"></i> 
                                             </span>
                                             <span class="media-body">
-                                                <span class="heading-font-family media-heading">Invitation accepted</span>
-                                            <span class="media-content">Your have been Invited ...</span>
+                                                <span class="heading-font-family media-heading">Invitation accepted</span> 
+                                                <span class="media-content">Your have been Invited ...</span>
                                             </span>
                                         </a>
                                         <a href="#" class="media">
@@ -58,8 +61,8 @@
                                                 <img src="../img/users/1.jpg" class="rounded-circle" alt="">
                                             </span>
                                             <span class="media-body">
-                                                <span class="heading-font-family media-heading">Steve Smith</span>
-                                            <span class="media-content">I slowly updated projects</span>
+                                                <span class="heading-font-family media-heading">Steve Smith</span> 
+                                                <span class="media-content">I slowly updated projects</span>
                                             </span>
                                         </a>
                                         <a href="#" class="media">
@@ -67,8 +70,8 @@
                                                 <i class="ik ik-calendar"></i> 
                                             </span>
                                             <span class="media-body">
-                                                <span class="heading-font-family media-heading">To Do</span>
-                                            <span class="media-content">Meeting with Nathan on Friday 8 AM ...</span>
+                                                <span class="heading-font-family media-heading">To Do</span> 
+                                                <span class="media-content">Meeting with Nathan on Friday 8 AM ...</span>
                                             </span>
                                         </a>
                                     </div>
@@ -113,100 +116,124 @@
             <div class="page-wrap">
                 <div class="app-sidebar colored">
                     <div class="sidebar-header">
-                        <a class="header-brand" href="../index.php">
+                        <a class="header-brand" href="index.php">
                             <div class="logo-img">
-                                <img src="../src/img/brand-white.svg" class="header-brand-img" alt="lavalite">
+                               <img src="../src/img/brand-white.svg" class="header-brand-img" alt="lavalite"> 
                             </div>
                             <span class="text">ThemeKit</span>
                         </a>
                         <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
                         <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
                     </div>
-
+                    
                     <div class="sidebar-content">
                         <div class="nav-container">
-                            <nav id="main-menu-navigation" class="navigation-main">
+                        <nav id="main-menu-navigation" class="navigation-main">
                                 <div class="nav-item ">
                                     <a href="../index.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-lavel">Manage Employees</div>
                                 <div class="nav-item active">
-                                    <a href="pages/employee_product.php" class="menu-item">Add New Product</a>
+                                    <a href="employee_list.php" class="menu-item">Employees List</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="employee_list.php" class="menu-item">Liste des orders </a>
+                                    <a href="add_profile.php" class="menu-item">Add New Employee</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="add_profile.php" class="menu-item"></a>
-                                </div>
-                                <div class="nav-item">
-                                    <a href="widget-statistic.html" class="menu-item"></a>
+                                    <a href="widget-statistic.html" class="menu-item">Statistic</a>
                                 </div>
                         </nav>
-                    </div>
-                </div>
-            </div>
-            <div class="main-content">
-                <div class="container-fluid">
-                    <div class="page-header">
-                        <div class="row align-items-end">
-                            <div class="col-lg-12">
-                                <nav class="breadcrumb-container" aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item">
-                                            <a href="../index.html"><i class="ik ik-home"></i></a>
-                                        </li>
-                                        <li class="breadcrumb-item">
-                                            <a href="#">Pages</a>
-                                        </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Profile</li>
-                                    </ol>
-                                </nav>
-                            </div>
                         </div>
                     </div>
-            <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header"><h3>New Product</h3></div>
-                                    <div class="card-body">
+                </div>
+                <div class="main-content">
+                    <div class="container-fluid">
+                        <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                </div>
+                                <div class="col-lg-4">
+                                    <nav class="breadcrumb-container" aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <a href="../index.php"><i class="ik ik-home"></i></a>
+                                            </li>
+                                            <li class="breadcrumb-item">
+                                                <a href="#">Widgets</a>
+                                            </li>
+                                            <li class="breadcrumb-item active" aria-current="page">Widget Data</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- product and new customar start -->
+                            <div class="col-xl-12"> 
+                                <div class="card table-card">
+                                    <div class="card-header">
+                                        <h3>Empolyee List</h3>
+                                    </div>
+                                    <div class="card-block">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Order ID</th>
+                                                        <th>Quantite</th>
+                                                        <th colspan="2">Status</th>
+                                                        <th>Customer ID</th>
+                                                        <th>Product ID</th>
+                                                        <th colspan="2" class="text-center">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php      
+                                                    // header("Refresh:20"); Refresh page each 20s to show any changes.
+                                                   
+                                                    include 'dbconnexion.php';
+                                                    $req= $conx->query('SELECT * From employee where position <> "admin"');
+                                                    while($data = $req->fetch()){
+                                                        echo '<tr>';
+                                                        echo '<td>'.$data['oid'].'</td>';
+                                                        echo '<td>'.$data['qunt'].'</td>';
+                                                        switch ($data['status']){
+                                                            case 0: $status="Waiting";break;
+                                                            case 1: $status="Accepted";break;
+                                                        }
+                                                        echo '<td>'.$data['caid'].'</td>';
+                                                        echo '<td>'.$data['pid'].'</td>';
+                                                        echo '<td class="text-center">'.$status.'</td>';
+                                                        echo '<td class="text-center"><div class="p-status bg-'.$color.' mr-10"></div></td>';
+                                                        echo '<td><a href="delivery.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Accept</button></a></td>';
+                                                        echo '<td><a href="delete.php?id='.$data['oid'].'"><button class="btn btn-danger">Reject</button></a></td>';
+                                                        echo '</tr>';
+                                                    }
+                                        
+                                                ?>
+                                                </tbody>
+                                            </table>
+                                            <?php  if(!empty($_GET['msg']))
+                                                    {echo $_GET['msg'];};?>
+                                        </div>
 
-                                        <form class="forms-sample" action="store_product.php" method="POST">
-                                            <div class="form-group">
-                                                <label for="exampleInputName1">Name</label>
-                                                <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="Name">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                <div class="form-group">
-                                                <label for="exampleTextarea1">Description</label>
-                                                <textarea class="form-control" id="exampleTextarea1" name="description" rows="4"></textarea>
-                                            </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail3">Price</label>
-                                                        <input type="tect" class="form-control" id="exampleInputEmail3" name="price" placeholder="Price">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword4">Quantity</label>
-                                                <input type="text" class="form-control" id="exampleInputPassword4" name="qunt" placeholder="Password">
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label>File upload</label>
-                                                <input type="file" name="file" class="file-upload-default">
-                                                <div class="input-group col-xs-12">
-                                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                                    <span class="input-group-append">
-                                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                            <button class="btn btn-light">Cancel</button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        
+                    </div>
+                </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="../plugins/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+        <script src="../plugins/screenfull/dist/screenfull.js"></script>
+        <script src="../plugins/owl.carousel/dist/owl.carousel.min.js"></script>
+        <script src="../plugins/chartist/dist/chartist.min.js"></script>
+        <script src="../plugins/flot-charts/jquery.flot.js"></script>
+        <script src="../plugins/flot-charts/jquery.flot.categories.js"></script>
+        <script src="../plugins/flot-charts/curvedLines.js"></script>
+        <script src="../plugins/flot-charts/jquery.flot.tooltip.min.js"></script>
+        <script src="../dist/js/theme.min.js"></script>
+        <script src="../js/widget-data.js"></script>
+    </body>
+</html>

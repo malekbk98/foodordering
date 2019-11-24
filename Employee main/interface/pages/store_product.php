@@ -6,11 +6,15 @@
         $qunt = $_POST['qunt'];
         $file = $_POST['file'];
         include 'dbconnexion.php';
-
-        $req= $conx->query("SELECT * From product where email='$email'");
+        $req= $conx->query("SELECT * From product where name='$name'");
         if ($req->rowCount()==0){
-                $sql = "INSERT INTO employee (name, description, price, qunt, file) VALUES ('$name', '$description', '$price','$qunt','$file')";
-                $conx->exec($sql);
+                $req=$conx-> prepare('INSERT INTO product (name, description, price, qunt, file) VALUES (:param_name,:param_description,:param_price,:param_qunt,:param_file)';
+                $req->bindParam(':param_name', $name); 
+                $req->bindParam(':param_description', $description); 
+                $req->bindParam(':param_price', $price); 
+                $req->bindParam(':param_qunt', $qunt); 
+                $req->bindParam(':param_file', $file); 
+                $req->execute();
                 header("Location: product_list.php?msg=Add successfully");
         }else{
                 header("Location: product_list.php?msg=Email already taken!");
