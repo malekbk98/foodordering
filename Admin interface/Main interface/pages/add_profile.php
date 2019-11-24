@@ -125,7 +125,7 @@
 
                     <div class="sidebar-content">
                         <div class="nav-container">
-                            <nav id="main-menu-navigation" class="navigation-main">
+                        <nav id="main-menu-navigation" class="navigation-main">
                                 <div class="nav-item ">
                                     <a href="../index.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
@@ -139,7 +139,14 @@
                                 <div class="nav-item">
                                     <a href="widget-statistic.html" class="menu-item">Statistic</a>
                                 </div>
-                        </nav>
+                                <div class="nav-lavel">Product</div>
+                                <div class="nav-item">
+                                    <a href="approve_product.php" class="menu-item">Approve Product</a>
+                                </div>
+                                <div class="nav-item">
+                                    <a href="availbel_product.php" class="menu-item">Availbel Product</a>
+                                </div>
+                             </nav>
                     </div>
                 </div>
             </div>
@@ -148,17 +155,7 @@
                     <div class="page-header">
                         <div class="row align-items-end">
                             <div class="col-lg-12">
-                                <nav class="breadcrumb-container" aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item">
-                                            <a href="../index.html"><i class="ik ik-home"></i></a>
-                                        </li>
-                                        <li class="breadcrumb-item">
-                                            <a href="#">Pages</a>
-                                        </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Profile</li>
-                                    </ol>
-                                </nav>
+                          
                             </div>
                         </div>
                     </div>
@@ -173,24 +170,28 @@
                                     <form class="forms-sample" action="store_employee.php" method="POST">
                                         <div class="form-group">
                                             <label for="name">Full Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" requied>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="Email1">Email address</label>
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" requied>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="Password1">Password</label>
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" requied>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="ConfirmPassword1">Confirm Password</label>
-                                            <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password" requied>
+                                            <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="Phone">Phone</label>
-                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" requied>
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" required >
                                         </div>
+                                        <div class="form-group">
+                                                        <label for="pic">Update Picture</label><br>
+                                                        <input type="file" name="pic" accept="image/*" value="" required >
+                                                    </div>
                                         <div class="form-group">
                                             <label class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" name="position" value="Employee" checked>

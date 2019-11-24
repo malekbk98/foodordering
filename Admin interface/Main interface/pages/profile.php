@@ -44,6 +44,7 @@ $email= $data['email'];
 $phone= $data['phone'];
 $password= $data['pwd'];
 $position= $data['position'];
+$file=$data['pic'];
 
 ?>
 
@@ -163,6 +164,13 @@ $position= $data['position'];
                                 <div class="nav-item">
                                     <a href="widget-statistic.html" class="menu-item">Statistic</a>
                                 </div>
+                                <div class="nav-lavel">Product</div>
+                                <div class="nav-item">
+                                    <a href="approve_product.php" class="menu-item">Approve Product</a>
+                                </div>
+                                <div class="nav-item">
+                                    <a href="availbel_product.php" class="menu-item">Availbel Product</a>
+                                </div>
                         </nav>
                         </div>
                     </div>
@@ -192,7 +200,7 @@ $position= $data['position'];
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center"> 
-                                            <img src="../img/user.jpg" class="rounded-circle" width="150" />
+                                            <img src="../img/users/<?php echo $file;?>" class="rounded-circle" width="150" />
                                             <h4 class="card-title mt-10"><?php echo $name;?></h4>
                                             <p class="card-subtitle"><?php echo $position;?></p>
                                             <div class="row text-center justify-content-md-center">
@@ -311,6 +319,10 @@ $position= $data['position'];
                                                     <div class="form-group">
                                                         <label for="phone">Phone No</label>
                                                         <input type="text" value="<?php echo $phone;?>" id="phone" name="phone" class="form-control" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="file">Update Picture</label><br>
+                                                        <input type="file" name="pic" accept="image/*" value="">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="position">Select Position</label>

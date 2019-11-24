@@ -46,6 +46,7 @@ $description= $data['description'];
 $price= $data['price'];
 $qunt= $data['qunt'];
 $valid= $data['valid'];
+$file= $data['file'];
 
 ?>
 
@@ -156,7 +157,7 @@ $valid= $data['valid'];
                                     <a href="../index.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-lavel">Manage Employees</div>
-                                <div class="nav-item active">
+                                <div class="nav-item">
                                     <a href="employee_list.php" class="menu-item">Employees List</a>
                                 </div>
                                 <div class="nav-item">
@@ -164,6 +165,13 @@ $valid= $data['valid'];
                                 </div>
                                 <div class="nav-item">
                                     <a href="widget-statistic.html" class="menu-item">Statistic</a>
+                                </div>
+                                <div class="nav-lavel">Product</div>
+                                <div class="nav-item">
+                                    <a href="approve_product.php" class="menu-item">Approve Product</a>
+                                </div>
+                                <div class="nav-item active">
+                                    <a href="availbel_product.php" class="menu-item">Availbel Product</a>
                                 </div>
                         </nav>
                         </div>
@@ -190,7 +198,7 @@ $valid= $data['valid'];
                         </div>
 
                         <div class="row">
-                        <div class="col-md-2"></div>
+                        <div class="col-lg-4 col-md-4"><img class="img-fluid" src="../img/<?php echo $file;?>"></div>
                             <div class="col-lg-8 col-md-8">
                                 <div class="card">
                                     <div class="tab-content">
@@ -217,6 +225,10 @@ $valid= $data['valid'];
                                                         <input type="text" value="<?php echo $qunt;?>" id="qunt" name="qunt" class="form-control" required="">
                                                     </div>
                                                     <div class="form-group">
+                                                        <label for="file">Update Picture</label><br>
+                                                        <input type="file" name="pic" accept="image/*" value="">
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="position">Select Availability</label>
                                                         <select name="valid" id="valid" class="form-control">
                                                             <option value="availbel" >Availbel</option>
@@ -230,7 +242,6 @@ $valid= $data['valid'];
                                         </div>
                                     </div>
                                 </div>
-                            
                         </div>
                     </div>
                 </div>

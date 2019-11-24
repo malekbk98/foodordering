@@ -158,13 +158,6 @@
                                 <div class="nav-item">
                                     <a href="pages/availbel_product.php" class="menu-item">Availbel Product</a>
                                 </div>
-                                <div class="nav-lavel">Statistic</div>
-                                <div class="nav-item">
-                                    <a href="pages/product-statistic.php" class="menu-item">Product</a>
-                                </div>
-                                <div class="nav-item">
-                                    <a href="pages/product-statistic.php" class="menu-item">Sales</a>
-                                </div>
                         </nav>
                         </div>
                     </div>
