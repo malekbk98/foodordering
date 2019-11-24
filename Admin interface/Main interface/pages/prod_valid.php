@@ -2,7 +2,7 @@
         $id=$_GET['id'];
         $res=$_GET['result'];
         include 'dbconnexion.php';
-        if ($res==1)
+        if ($res=="availbel")
         {   $req = $conx->prepare("UPDATE product SET valid=:param_valid WHERE pid=:param_id");
             $req->bindParam(':param_valid',$res);
             $req->bindParam(':param_id',$id);

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Approve Product</title>
+        <title>Edit product</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,15 +17,38 @@
         <link rel="stylesheet" href="../plugins/ionicons/dist/css/ionicons.min.css">
         <link rel="stylesheet" href="../plugins/icon-kit/dist/css/iconkit.min.css">
         <link rel="stylesheet" href="../plugins/perfect-scrollbar/css/perfect-scrollbar.css">
-        <link rel="stylesheet" href="../plugins/weather-icons/css/weather-icons.min.css">
-        <link rel="stylesheet" href="../plugins/owl.carousel/dist/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="../plugins/owl.carousel/dist/assets/owl.theme.default.min.css">
-        <link rel="stylesheet" href="../plugins/chartist/dist/chartist.min.css">
         <link rel="stylesheet" href="../dist/css/theme.min.css">
         <script src="../src/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     </head>
 
     <body>
+    <?php
+    session_start();
+    
+
+include 'dbconnexion.php';
+
+if (!empty($_GET['id'])){
+    $id=$id=$_GET['id'];
+    $_SESSION["id"]=$id;
+}else{
+    $id=$_SESSION["id"];
+}
+
+$req = $conx->prepare("SELECT * FROM product where pid=:param_id");
+$req->bindParam(':param_id',$id);
+$req->execute();
+$data = $req->fetch();
+$name= $data['name'];
+$description= $data['description'];
+$price= $data['price'];
+$qunt= $data['qunt'];
+$valid= $data['valid'];
+
+?>
+
         <div class="wrapper">
             <header class="header-top" header-theme="light">
                 <div class="container-fluid">
@@ -133,7 +156,7 @@
                                     <a href="../index.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-lavel">Manage Employees</div>
-                                <div class="nav-item">
+                                <div class="nav-item active">
                                     <a href="employee_list.php" class="menu-item">Employees List</a>
                                 </div>
                                 <div class="nav-item">
@@ -141,13 +164,6 @@
                                 </div>
                                 <div class="nav-item">
                                     <a href="widget-statistic.html" class="menu-item">Statistic</a>
-                                </div>
-                                <div class="nav-lavel">Product</div>
-                                <div class="nav-item">
-                                    <a href="approve_product.php" class="menu-item">Approve Product</a>
-                                </div>
-                                <div class="nav-item active">
-                                    <a href="availbel_product.php" class="menu-item">Availbel Product</a>
                                 </div>
                         </nav>
                         </div>
@@ -157,87 +173,75 @@
                     <div class="container-fluid">
                         <div class="page-header">
                             <div class="row align-items-end">
-                                <div class="col-lg-8">
-                                </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
                                                 <a href="../index.php"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="#">Widgets</a>
+                                                <a href="#">Pages</a>
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Widget Data</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
                                         </ol>
                                     </nav>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <!-- product and new customar start -->
-                            <div class="col-xl-12"> 
-                                <div class="card table-card">
-                                    <div class="card-header">
-                                        <h3>Empolyee List</h3>
-                                    </div>
-                                    <div class="card-block">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Product ID</th>
-                                                        <th>Name</th>
-                                                        <th>Description</th>
-                                                        <th>Price</th>
-                                                        <th>Quantity</th>
-                                                        <th>Availability</th>
-                                                        <th colspan="3">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php      
-                                                    // header("Refresh:20"); Refresh page each 20s to show any changes.
-                                                   
-                                                    include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From product where valid!="pending"');
-                                                    while($data = $req->fetch()){
-                                                        echo '<tr>';
-                                                        echo '<td>'.$data['pid'].'</td>';
-                                                        echo '<td>'.$data['name'].'</td>';
-                                                        echo '<td>'.$data['description'].'</td>';
-                                                        echo '<td>'.$data['price'].'</td>';
-                                                        echo '<td>'.$data['qunt'].'</td>';
-                                                        echo '<td>'.$data['valid'].'</td>';
-                                                        echo '<td><a href="edit_product.php?id='.$data['pid'].'&result=1"><button class="btn btn-success">Edit</button></a>
-                                                        <a href="prod_valid.php?id='.$data['pid'].'&result=0"><button class="btn btn-danger">Delete</button></a></td>';
-                                                        echo '</tr>';
-                                                        
-                                                    }
-                                                ?>
-                                                </tbody>
-                                            </table>
-                                            <?php  if(!empty($_GET['msg']))
-                                                    {echo $_GET['msg'];};?>
-                                        </div>
 
+                        <div class="row">
+                        <div class="col-md-2"></div>
+                            <div class="col-lg-8 col-md-8">
+                                <div class="card">
+                                    <div class="tab-content">
+                                            <div class="card-body">
+                                                <form class="form-horizontal" action="updateProduct.php" method="POST">
+                                                    <div class="form-group">
+                                                        <label for="name">Product ID</label>
+                                                        <input type="text" value="<?php echo $id;?>" class="form-control" name="id" id="id" readonly>
+                                                    </div>
+                                                        <div class="form-group">
+                                                        <label for="name">Product Name</label>
+                                                        <input type="text" value="<?php echo $name;?>" class="form-control" name="name" id="name" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="description">Product Description</label>
+                                                        <input type="text" value="<?php echo $description;?>" class="form-control" name="description" id="description" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="price">Price</label>
+                                                        <input type="text" value="<?php echo $price;?>" class="form-control" name="price" id="price" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="qunt">Availbel Quantity</label>
+                                                        <input type="text" value="<?php echo $qunt;?>" id="qunt" name="qunt" class="form-control" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="position">Select Availability</label>
+                                                        <select name="valid" id="valid" class="form-control">
+                                                            <option value="availbel" >Availbel</option>
+                                                            <option value="disabled" <?php if($valid=="disabled"){ echo "selected";} ?>>Not Availbel/Disabled</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <button class="btn btn-success" type="submit" name="submit">Update Product</button>
+                                                </form>                                          
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
         <script src="../plugins/popper.js/dist/umd/popper.min.js"></script>
         <script src="../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="../plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
         <script src="../plugins/screenfull/dist/screenfull.js"></script>
-        <script src="../plugins/owl.carousel/dist/owl.carousel.min.js"></script>
-        <script src="../plugins/chartist/dist/chartist.min.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.categories.js"></script>
-        <script src="../plugins/flot-charts/curvedLines.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.tooltip.min.js"></script>
         <script src="../dist/js/theme.min.js"></script>
-        <script src="../js/widget-data.js"></script>
     </body>
 </html>

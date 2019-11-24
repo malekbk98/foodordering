@@ -144,10 +144,10 @@
                                 </div>
                                 <div class="nav-lavel">Product</div>
                                 <div class="nav-item active">
-                                    <a href="pages/approve_product.php" class="menu-item">Approve Product</a>
+                                    <a href="approve_product.php" class="menu-item">Approve Product</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="pages/product-statistic.php" class="menu-item">Availbel Product</a>
+                                    <a href="availbel_product.php" class="menu-item">Availbel Product</a>
                                 </div>
                         </nav>
                         </div>
@@ -191,7 +191,7 @@
                                                         <th>Description</th>
                                                         <th>Price</th>
                                                         <th>Quantity</th>
-                                                        <th>Actions</th>
+                                                        <th colspan="2">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -199,7 +199,7 @@
                                                     // header("Refresh:20"); Refresh page each 20s to show any changes.
                                                    
                                                     include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From product where valid=0');
+                                                    $req= $conx->query('SELECT * From product where valid="pending"');
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['pid'].'</td>';
@@ -207,7 +207,7 @@
                                                         echo '<td>'.$data['description'].'</td>';
                                                         echo '<td>'.$data['price'].'</td>';
                                                         echo '<td>'.$data['qunt'].'</td>';
-                                                        echo '<td><a href="prod_valid.php?id='.$data['pid'].'&result=1"><button class="btn btn-success">Approve</button></a>;
+                                                        echo '<td><a href="prod_valid.php?id='.$data['pid'].'&result=availbel"><button class="btn btn-success">Approve</button></a>
                                                         <a href="prod_valid.php?id='.$data['pid'].'&result=0"><button class="btn btn-danger">Refuse</button></a></td>';
                                                         echo '</tr>';
                                                     }
