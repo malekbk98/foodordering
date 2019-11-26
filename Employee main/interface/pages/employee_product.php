@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add employee</title>
+    <title>Add Product</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -134,7 +134,7 @@
                                     <a href="pages/employee_product.php" class="menu-item">Add New Product</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="employee_list.php" class="menu-item">Liste des orders </a>
+                                    <a href="employee_order.php" class="menu-item">Liste des orders </a>
                                 </div>
                                 <div class="nav-item">
                                     <a href="add_profile.php" class="menu-item"></a>
@@ -194,13 +194,10 @@
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label>File upload</label>
+                                                <label>Upload picture</label>
                                                 <input type="file" name="file" class="file-upload-default">
                                                 <div class="input-group col-xs-12">
-                                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                                    <span class="input-group-append">
-                                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                                    </span>
+                                                    <input type="file">
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-primary mr-2">Submit</button>

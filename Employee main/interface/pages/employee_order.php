@@ -133,14 +133,17 @@
                                     <a href="../index.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-lavel">Manage Employees</div>
+                                <div class="nav-item">
+                                    <a href="employee_product.php" class="menu-item">Add New Product</a>
+                                </div>
                                 <div class="nav-item active">
-                                    <a href="employee_list.php" class="menu-item">Employees List</a>
+                                    <a href="employee_order.php" class="menu-item">Liste des orders </a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="add_profile.php" class="menu-item">Add New Employee</a>
+                                    <a href="add_profile.php" class="menu-item"></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="widget-statistic.html" class="menu-item">Statistic</a>
+                                    <a href="widget-statistic.html" class="menu-item"></a>
                                 </div>
                         </nav>
                         </div>
@@ -172,7 +175,7 @@
                             <div class="col-xl-12"> 
                                 <div class="card table-card">
                                     <div class="card-header">
-                                        <h3>Empolyee List</h3>
+                                        <h3>Order List</h3>
                                     </div>
                                     <div class="card-block">
                                         <div class="table-responsive">
@@ -182,17 +185,15 @@
                                                         <th>Order ID</th>
                                                         <th>Quantite</th>
                                                         <th colspan="2">Status</th>
-                                                        <th>Customer ID</th>
+                                                        <th>Cart ID</th>
                                                         <th>Product ID</th>
                                                         <th colspan="2" class="text-center">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php      
-                                                    // header("Refresh:20"); Refresh page each 20s to show any changes.
-                                                   
                                                     include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From employee where position <> "admin"');
+                                                    $req= $conx->query('SELECT * From orders where oid');
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['oid'].'</td>';
@@ -201,16 +202,21 @@
                                                             case 0: $status="Waiting";break;
                                                             case 1: $status="Accepted";break;
                                                         }
+                                                        switch ($data['status']){
+                                                            case 0: $color="orange";break;
+                                                            case 1: $color="green";break;
+                                                        }
+                                                        echo '<td>'.$status.'</td>';
+                                                        echo '<td><div class="p-status bg-'.$color.' mr-10"></div></td>';
                                                         echo '<td>'.$data['caid'].'</td>';
                                                         echo '<td>'.$data['pid'].'</td>';
-                                                        echo '<td class="text-center">'.$status.'</td>';
-                                                        echo '<td class="text-center"><div class="p-status bg-'.$color.' mr-10"></div></td>';
                                                         echo '<td><a href="delivery.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Accept</button></a></td>';
-                                                        echo '<td><a href="delete.php?id='.$data['oid'].'"><button class="btn btn-danger">Reject</button></a></td>';
+                                                        echo '<td><a href="delete_order.php?id='.$data['oid'].'"><button class="btn btn-danger">Reject</button></a></td>';
                                                         echo '</tr>';
                                                     }
                                         
                                                 ?>
+                                                
                                                 </tbody>
                                             </table>
                                             <?php  if(!empty($_GET['msg']))

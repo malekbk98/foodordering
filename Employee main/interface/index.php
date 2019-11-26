@@ -146,7 +146,7 @@
                                     <a href="pages/employee_product.php" class="menu-item">Add New Product</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="pages/add_profile.php" class="menu-item">Liste des orders</a>
+                                    <a href="pages/employee_order.php" class="menu-item">Liste des orders</a>
                                 </div>
                                 <div class="nav-item">
                                     <a href="pages/widget-statistic.html" class="menu-item">Statistic</a>
