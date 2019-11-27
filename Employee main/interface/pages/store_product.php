@@ -1,5 +1,4 @@
-<?php
-    
+<?php 
         $name = $_POST['name'];
         $description = $_POST['description'];
         $price = $_POST['price'];
@@ -15,8 +14,8 @@
                 $req->bindParam(':param_qunt', $qunt); 
                 $req->bindParam(':param_file', $file); 
                 $req->execute();
-                header("Location: index.php?msg=Add successfully");
+                header("Location:employee_product.php?msg=Add successfully");
         }else{
-                header("Location: index.php?msg=nom exist!!");
+                header("Location:employee_product.php?msg=nom exist!!");
         }
 ?>

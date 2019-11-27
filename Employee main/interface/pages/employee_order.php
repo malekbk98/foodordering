@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Widget Data | ThemeKit - Admin Template</title>
+        <title>Liste Orders</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -137,13 +137,10 @@
                                     <a href="employee_product.php" class="menu-item">Add New Product</a>
                                 </div>
                                 <div class="nav-item active">
-                                    <a href="employee_order.php" class="menu-item">Liste des orders </a>
+                                    <a href="employee_order.php" class="menu-item">Orders List</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="add_profile.php" class="menu-item"></a>
-                                </div>
-                                <div class="nav-item">
-                                    <a href="widget-statistic.html" class="menu-item"></a>
+                                    <a href="liste_employee.php" class="menu-item">Employees List</a>
                                 </div>
                         </nav>
                         </div>
@@ -171,7 +168,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <!-- product and new customar start -->
                             <div class="col-xl-12"> 
                                 <div class="card table-card">
                                     <div class="card-header">
@@ -210,7 +206,7 @@
                                                         echo '<td><div class="p-status bg-'.$color.' mr-10"></div></td>';
                                                         echo '<td>'.$data['caid'].'</td>';
                                                         echo '<td>'.$data['pid'].'</td>';
-                                                        echo '<td><a href="delivery.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Accept</button></a></td>';
+                                                        echo '<td><a href="accept_order.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Accept</button></a></td>';
                                                         echo '<td><a href="delete_order.php?id='.$data['oid'].'"><button class="btn btn-danger">Reject</button></a></td>';
                                                         echo '</tr>';
                                                     }

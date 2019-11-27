@@ -146,17 +146,10 @@
                                     <a href="pages/employee_product.php" class="menu-item">Add New Product</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="pages/employee_order.php" class="menu-item">Liste des orders</a>
+                                    <a href="pages/employee_order.php" class="menu-item">Orders List</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="pages/widget-statistic.html" class="menu-item">Statistic</a>
-                                </div>
-                                <div class="nav-lavel">Statistic</div>
-                                <div class="nav-item">
-                                    <a href="pages/product-statistic.php" class="menu-item">Product</a>
-                                </div>
-                                <div class="nav-item">
-                                    <a href="pages/product-statistic.php" class="menu-item">Sales</a>
+                                    <a href="pages/liste_employee.php" class="menu-item">Employees List</a>
                                 </div>
                         </nav>
                         </div>
