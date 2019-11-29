@@ -158,6 +158,10 @@
                                 <div class="nav-item">
                                     <a href="pages/availbel_product.php" class="menu-item">Availbel Product</a>
                                 </div>
+                                <div class="nav-lavel">Vehicles</div>
+                                <div class="nav-item">
+                                    <a href="pages/manage_vehicle.php" class="menu-item">Manage Vehicles</a>
+                                </div>
                         </nav>
                         </div>
                     </div>
