@@ -155,7 +155,6 @@
                     <div class="page-header">
                         <div class="row align-items-end">
                             <div class="col-lg-12">
-                          
                             </div>
                         </div>
                     </div>
