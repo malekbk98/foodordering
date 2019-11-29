@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Manage Vehicle</title>
+        <title>Edit product</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,15 +17,37 @@
         <link rel="stylesheet" href="../plugins/ionicons/dist/css/ionicons.min.css">
         <link rel="stylesheet" href="../plugins/icon-kit/dist/css/iconkit.min.css">
         <link rel="stylesheet" href="../plugins/perfect-scrollbar/css/perfect-scrollbar.css">
-        <link rel="stylesheet" href="../plugins/weather-icons/css/weather-icons.min.css">
-        <link rel="stylesheet" href="../plugins/owl.carousel/dist/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="../plugins/owl.carousel/dist/assets/owl.theme.default.min.css">
-        <link rel="stylesheet" href="../plugins/chartist/dist/chartist.min.css">
         <link rel="stylesheet" href="../dist/css/theme.min.css">
         <script src="../src/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     </head>
 
     <body>
+    <?php
+    session_start();
+    
+
+include 'dbconnexion.php';
+
+if (!empty($_GET['id'])){
+    $id=$id=$_GET['id'];
+    $_SESSION["id"]=$id;
+}else{
+    $id=$_SESSION["id"];
+}
+
+$req = $conx->prepare("SELECT * FROM vehicle where vid=:param_id");
+$req->bindParam(':param_id',$id);
+$req->execute();
+$data = $req->fetch();
+$vnum= $data['vnum'];
+$brand= $data['brand'];
+$model= $data['model'];
+$eid= $data['eid'];
+
+?>
+
         <div class="wrapper">
             <header class="header-top" header-theme="light">
                 <div class="container-fluid">
@@ -146,12 +168,8 @@
                                 <div class="nav-item">
                                     <a href="approve_product.php" class="menu-item">Approve Product</a>
                                 </div>
-                                <div class="nav-item">
-                                    <a href="availbel_product.php" class="menu-item">Availbel Product</a>
-                                </div>
-                                <div class="nav-lavel">Vehicles</div>
                                 <div class="nav-item active">
-                                    <a href="manage_vehicle.php" class="menu-item">Manage Vehicles</a>
+                                    <a href="availbel_product.php" class="menu-item">Availbel Product</a>
                                 </div>
                         </nav>
                         </div>
@@ -161,87 +179,65 @@
                     <div class="container-fluid">
                         <div class="page-header">
                             <div class="row align-items-end">
-                                <div class="col-lg-8">
-                                </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
                                                 <a href="../index.php"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="#">Widgets</a>
+                                                <a href="#">Pages</a>
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Widget Data</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
                                         </ol>
                                     </nav>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <!-- product and new customar start -->
-                            <div class="col-xl-12"> 
-                                <div class="card table-card">
-                                    <div class="card-header">
-                                        <h3>Empolyee List</h3>
-                                    </div>
-                                    <div class="card-block">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Vehicle ID</th>
-                                                        <th>Vehicle Num</th>
-                                                        <th>Brand</th>
-                                                        <th>Model</th>
-                                                        <th>Driver ID</th>
-                                                        <th>Driver Name</th>
-                                                        <th colspan="2">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php      
-                                                    // header("Refresh:20"); Refresh page each 20s to show any changes.
-                                                   
-                                                    include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From vehicle v, employee e Where e.eid=v.eid');
-                                                    while($data = $req->fetch()){
-                                                        echo '<tr>';
-                                                        echo '<td>'.$data['vid'].'</td>';
-                                                        echo '<td>'.$data['vnum'].'</td>';
-                                                        echo '<td>'.$data['brand'].'</td>';
-                                                        echo '<td>'.$data['model'].'</td>';
-                                                        echo '<td>'.$data['eid'].'</td>';
-                                                        echo '<td>'.$data['name'].'</td>';
-                                                        echo '<td><a href="edit_vehicle.php?id='.$data['vid'].'&result=1"><button class="btn btn-success">Edit</button></a>
-                                                        <a href="prod_valid.php?id='.$data['vid'].'&result=0"><button class="btn btn-danger">Delete</button></a></td>';
-                                                        echo '</tr>';
-                                                        
-                                                    }
-                                                ?>
-                                                </tbody>
-                                            </table>
-                                            <?php  if(!empty($_GET['msg']))
-                                                    {echo $_GET['msg'];};?>
-                                        </div>
 
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8">
+                                <div class="card">
+                                    <div class="tab-content">
+                                            <div class="card-body">
+                                                <form class="form-horizontal" action="updateVehicle.php" method="POST">
+                                                    <div class="form-group">
+                                                        <label for="id">Vehicle ID</label>
+                                                        <input type="text" value="<?php echo $id;?>" class="form-control" name="id" id="id" readonly>
+                                                    </div>
+                                                        <div class="form-group">
+                                                        <label for="vnum">Vehicle Number</label>
+                                                        <input type="text" value="<?php echo $vnum;?>" class="form-control" name="vnum" id="vnum" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="brand">Vehicle Brand</label>
+                                                        <input type="text" value="<?php echo $brand;?>" class="form-control" name="brand" id="brand" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="model">Vehicle Model</label>
+                                                        <input type="text" value="<?php echo $model;?>" class="form-control" name="model" id="model" required="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="eid">Driver ID</label>
+                                                        <input type="text" value="<?php echo $eid;?>" id="eid" name="eid" class="form-control" required="">
+                                                    </div>
+                                                    <button class="btn btn-success" type="submit" name="submit">Update Vehicle</button>
+                                                </form>                                          
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
         <script src="../plugins/popper.js/dist/umd/popper.min.js"></script>
         <script src="../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="../plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
         <script src="../plugins/screenfull/dist/screenfull.js"></script>
-        <script src="../plugins/owl.carousel/dist/owl.carousel.min.js"></script>
-        <script src="../plugins/chartist/dist/chartist.min.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.categories.js"></script>
-        <script src="../plugins/flot-charts/curvedLines.js"></script>
-        <script src="../plugins/flot-charts/jquery.flot.tooltip.min.js"></script>
         <script src="../dist/js/theme.min.js"></script>
-        <script src="../js/widget-data.js"></script>
     </body>
 </html>
