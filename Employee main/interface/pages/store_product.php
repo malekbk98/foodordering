@@ -2,6 +2,7 @@
         $name = $_POST['name'];
         $description = $_POST['description'];
         $price = $_POST['price'];
+        $valid = $_POST['valid'];
         $qunt = $_POST['qunt'];
         $file = $_POST['file'];
         include 'dbconnexion.php';

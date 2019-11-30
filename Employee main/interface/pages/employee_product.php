@@ -180,21 +180,23 @@
                                                 <textarea class="form-control" id="exampleTextarea1" name="description" rows="4"></textarea>
                                             </div>
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail3">Price</label>
-                                                        <input type="tect" class="form-control" id="exampleInputEmail3" name="price" placeholder="Price">
+                                                        <label for="exampleInputPrice3">Price</label>
+                                                        <input type="text" class="form-control" id="exampleInputPrice3" name="price" placeholder="Price">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword4">Quantity</label>
-                                                <input type="text" class="form-control" id="exampleInputPassword4" name="qunt" placeholder="Password">
+                                                        <input type="text" class="form-control" id="exampleInputValid3" name="valid" placeholder="Valid" hidden>
+                                                    </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputQuantity4">Quantity</label>
+                                                <input type="text" class="form-control" id="exampleInputQuantity4" name="qunt" placeholder="Quantity">
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label>Upload picture</label>
-                                                <input type="file" name="file" class="file-upload-default">
                                                 <div class="input-group col-xs-12">
-                                                    <input type="file">
+                                                    <input type="file" name="file" accepted="/img/*">
                                                 </div>
                                             </div>
                                             <button type="submit" name="submit" class="btn btn-primary mr-2">Submit</button>
