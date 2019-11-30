@@ -1,3 +1,6 @@
+<?php
+include 'check_session.php';
+?>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>

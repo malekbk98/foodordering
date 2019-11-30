@@ -1,3 +1,6 @@
+<?php
+include 'pages/check_session.php';
+?>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -27,14 +30,7 @@
         <link rel="stylesheet" href="dist/css/theme.min.css">
         <script src="src/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-
     <body>
-        <?php
-            session_start();
-            $_SESSION['valid']=1;
-            $_SESSION['id']="";
-        ?>
-
         <div class="wrapper">
             <header class="header-top" header-theme="light">
                 <div class="container-fluid">
