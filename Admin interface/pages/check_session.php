@@ -9,6 +9,13 @@ if(!isset($_SESSION['log'])){
   $data = $req->fetch();
   $ad_name=$data['name'];
   $ad_pic=$data['pic'];
+  $req= $conx->query('SELECT * From product');
+  $prod_app=0;
+  while($da = $req->fetch()){ 
+  if ($da['valid']=="pending"){
+    $prod_app++;
+}                                          
+}
 }
 
 ?>

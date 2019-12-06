@@ -44,39 +44,21 @@ include 'pages/statistic.php';
                         </div>
                         <div class="top-menu d-flex align-items-center">
                             <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-bell"></i><span class="badge bg-danger">3</span></a>
+                                <a class="nav-link dropdown-toggle" href="#" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-bell"></i><?php if($prod_app!=0){echo "<span class='badge bg-danger'>".$prod_app."</span>";}?></a>
                                 <div class="dropdown-menu dropdown-menu-right notification-dropdown" aria-labelledby="notiDropdown">
                                     <h4 class="header">Notifications</h4>
                                     <div class="notifications-wrap">
-                                        <a href="#" class="media">
-                                            <span class="d-flex">
-                                                <i class="ik ik-check"></i> 
-                                            </span>
-                                            <span class="media-body">
-                                                <span class="heading-font-family media-heading">Invitation accepted</span>
-                                            <span class="media-content">Your have been Invited ...</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="media">
-                                            <span class="d-flex">
-                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
-                                            </span>
-                                            <span class="media-body">
-                                                <span class="heading-font-family media-heading">Steve Smith</span>
-                                            <span class="media-content">I slowly updated projects</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="media">
+                                    <?php if($prod_app!=0){
+                                        echo '<a href="pages/approve_product.php" class="media">
                                             <span class="d-flex">
                                                 <i class="ik ik-calendar"></i> 
                                             </span>
                                             <span class="media-body">
-                                                <span class="heading-font-family media-heading">To Do</span>
-                                            <span class="media-content">Meeting with Nathan on Friday 8 AM ...</span>
+                                            <span class="media-content">You have '.$prod_app.' Products to approuve</span>
                                             </span>
-                                        </a>
+                                        </a>'
+                                    ;}?>
                                     </div>
-                                    <div class="footer"><a href="javascript:void(0);">See all activity</a></div>
                                 </div>
                             </div>
                             <div class="dropdown">
@@ -127,7 +109,7 @@ include 'pages/statistic.php';
                                 </div>
                                 <div class="nav-lavel">Product</div>
                                 <div class="nav-item">
-                                    <a href="pages/approve_product.php" class="menu-item"><i class="ik ik-check-square"></i><span>Approve Product<span class="badge badge-success">10+</span></span></a>
+                                    <a href="pages/approve_product.php" class="menu-item"><i class="ik ik-check-square"></i><span>Approve Product<?php if($prod_app!=0){echo "<span class='badge badge-success'>".$prod_app."+</span></span>";}?></a>
                                 </div>
                                 <div class="nav-item">
                                     <a href="pages/availbel_product.php" class="menu-item"><i class="ik ik-box"></i><span>Availbel Product</span></a>

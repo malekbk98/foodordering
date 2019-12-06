@@ -106,27 +106,32 @@ include 'check_session.php';
                     <div class="sidebar-content">
                         <div class="nav-container">
                         <nav id="main-menu-navigation" class="navigation-main">
-                                <div class="nav-item ">
+                                <div class="nav-item">
                                     <a href="../index.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-lavel">Manage Employees</div>
                                 <div class="nav-item active">
-                                    <a href="employee_list.php" class="menu-item">Employees List</a>
-                                </div>
+                                    <a href="employee_list.php" class="menu-item"><i class="ik ik-user"></i><span>Employees List</span></a>
+                                    </div>
                                 <div class="nav-item">
-                                    <a href="add_profile.php" class="menu-item">Add New Employee</a>
+                                    <a href="add_profile.php" class="menu-item"><i class="ik ik-user-plus"></i><span>Add New Employee</span></a>
                                 </div>
+                                <div class="nav-lavel">Manage Customers</div>
                                 <div class="nav-item">
-                                    <a href="widget-statistic.html" class="menu-item">Statistic</a>
+                                    <a href="customers_list.php" class="menu-item"><i class="ik ik-users"></i><span>Customers List</span></a>
                                 </div>
                                 <div class="nav-lavel">Product</div>
                                 <div class="nav-item">
-                                    <a href="approve_product.php" class="menu-item">Approve Product</a>
+                                    <a href="approve_product.php" class="menu-item"><i class="ik ik-check-square"></i><span>Approve Product<?php if($prod_app!=0){echo "<span class='badge badge-success'>".$prod_app."+</span></span>";}?></a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="availbel_product.php" class="menu-item">Availbel Product</a>
+                                    <a href="availbel_product.php" class="menu-item"><i class="ik ik-box"></i><span>Availbel Product</span></a>
                                 </div>
-                        </nav>
+                                <div class="nav-lavel">Vehicles</div>
+                                <div class="nav-item">
+                                    <a href="manage_vehicle.php" class="menu-item"><i class="ik ik-truck"></i><span>Manage Vehicles</span></a>
+                                </div>
+                            </nav>
                         </div>
                     </div>
                 </div>
