@@ -181,10 +181,6 @@ $file=$data['pic'];
                                             <img src="../img/users/<?php echo $file;?>" class="rounded-circle" width="150" />
                                             <h4 class="card-title mt-10"><?php echo $name;?></h4>
                                             <p class="card-subtitle"><?php echo $position;?></p>
-                                            <div class="row text-center justify-content-md-center">
-                                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="ik ik-user"></i> <font class="font-medium">254</font></a></div>
-                                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="ik ik-image"></i> <font class="font-medium">54</font></a></div>
-                                            </div>
                                         </div>
                                     </div>
                                     <hr class="mb-0"> 
@@ -210,67 +206,54 @@ $file=$data['pic'];
                                         <div class="tab-pane fade show active" id="current-month" role="tabpanel" aria-labelledby="pills-timeline-tab">
                                             <div class="card-body">
                                                 <div class="profiletimeline mt-0">
-                                                    <div class="sl-item">
-                                                        <div class="sl-left"> <img src="../img/users/1.jpg" alt="user" class="rounded-circle" /> </div>
-                                                        <div class="sl-right">
-                                                            <div><a href="javascript:void(0)" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                                <p>assign a new task <a href="javascript:void(0)"> Design weblayout</a></p>
-                                                                <div class="row">
-                                                                    <div class="col-lg-3 col-md-6 mb-20"><img src="../img/big/img2.jpg" class="img-fluid rounded" /></div>
-                                                                    <div class="col-lg-3 col-md-6 mb-20"><img src="../img/big/img3.jpg" class="img-fluid rounded" /></div>
-                                                                    <div class="col-lg-3 col-md-6 mb-20"><img src="../img/big/img4.jpg" class="img-fluid rounded" /></div>
-                                                                    <div class="col-lg-3 col-md-6 mb-20"><img src="../img/big/img5.jpg" class="img-fluid rounded" /></div>
-                                                                </div>
-                                                                <div class="like-comm"> 
-                                                                    <a href="javascript:void(0)" class="link mr-10">2 comment</a> 
-                                                                    <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="sl-item">
-                                                        <div class="sl-left"> <img src="../img/users/2.jpg" alt="user" class="rounded-circle" /> </div>
-                                                        <div class="sl-right">
-                                                            <div> <a href="javascript:void(0)" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
+                                                    <?php
+                                                      $req1= $conx->query('SELECT * From processing where eid=2');
+                                                      while($data1 = $req1->fetch()){ 
+                                                          $caid=$data1['caid'];
+                                                        $req2= $conx->query("SELECT * From orders where caid='$caid'");
+                                                        while($data2 = $req2->fetch()){
+                                                            $pid=$data2['pid'];
+                                                            $req3= $conx->query("SELECT * From product where pid='$pid'");
+                                                            while($data3 = $req3->fetch()){ 
+                                                                echo '<div class="sl-item">
+                                                                <div class="sl-left"> <img src="../img/users/'.$file.'" alt="user" class="rounded-circle" /> </div>
+                                                                <div class="sl-right">
+                                                                <div> <a href="javascript:void(0)" class="link">'.$data3['name'].'</a><span class="sl-date">   '.$data2['date'].'</span>
                                                                 <div class="mt-20 row">
-                                                                    <div class="col-md-3 col-xs-12"><img src="../img/big/img6.jpg" alt="user" class="img-fluid rounded" /></div>
+                                                                    <div class="col-md-3 col-xs-12"><img src="../img/'.$data3['file'].'" alt="food" class="img-fluid rounded" /></div>
                                                                     <div class="col-md-9 col-xs-12">
-                                                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p> <a href="javascript:void(0)" class="btn btn-success"> Design weblayout</a>
+                                                                    <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Order ID</th>
+                                                        <th>Product ID</th>
+                                                        <th>Quantity</th>
+                                                        <th>Cost</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>'.$data2['oid'].'</th>
+                                                        <td>'.$pid.'</td>
+                                                        <td>'.$data2['qunt'].'</td>
+                                                        <td>'.$data2['qunt']*$data3['price'].'</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="like-comm mt-20"> 
-                                                                    <a href="javascript:void(0)" class="link mr-10">2 comment</a> 
-                                                                    <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> 
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <hr>
-                                                    <div class="sl-item">
-                                                        <div class="sl-left"> <img src="../img/users/3.jpg" alt="user" class="rounded-circle" /> </div>
-                                                        <div class="sl-right">
-                                                            <div>
-                                                                <a href="javascript:void(0)" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                                <p class="mt-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper </p>
-                                                            </div>
-                                                            <div class="like-comm mt-20"> 
-                                                                <a href="javascript:void(0)" class="link mr-10">2 comment</a> 
-                                                                <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="sl-item">
-                                                        <div class="sl-left"> <img src="../img/users/4.jpg" alt="user" class="rounded-circle" /> </div>
-                                                        <div class="sl-right">
-                                                            <div><a href="javascript:void(0)" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                                                <blockquote class="mt-10">
-                                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                                                </blockquote>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <hr>';
+                                                                
+                                                        }
+                                                        }
+                                                      }
+                        
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
