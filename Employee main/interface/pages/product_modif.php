@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Employees List</title>
+        <title>Modif Product</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,8 +139,11 @@
                                 <div class="nav-item">
                                     <a href="employee_order.php" class="menu-item">Orders List</a>
                                 </div>
-                                <div class="nav-item active">
+                                <div class="nav-item">
                                     <a href="liste_employee.php" class="menu-item">Employees List</a>
+                                </div>
+                                <div class="nav-item active">
+                                    <a href="product_modif.php" class="menu-item">Modif Product</a>
                                 </div>
                         </nav>
                         </div>
@@ -168,6 +171,7 @@
                             </div>
                         </div>
                         <div class="row">
+                            <!-- product and new customar start -->
                             <div class="col-xl-12"> 
                                 <div class="card table-card">
                                     <div class="card-header">
@@ -178,40 +182,33 @@
                                             <table class="table table-hover mb-0">
                                                 <thead>
                                                     <tr>
-                                                        <th>Employee ID</th>
+                                                        <th>Product ID</th>
                                                         <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Phone</th>
-                                                        <th>Position</th>
-                                                        <th colspan="2">Status</th>
+                                                        <th>Description</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                        <th>Availability</th>
+                                                        <th colspan="3">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php    
+                                                    <?php      
+                                                    // header("Refresh:20"); Refresh page each 20s to show any changes.
+                                                   
                                                     include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From employee where position <> "admin"');
+                                                    $req= $conx->query('SELECT * From product where valid!="pending"');
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
-                                                        echo '<td>'.$data['eid'].'</td>';
+                                                        echo '<td>'.$data['pid'].'</td>';
                                                         echo '<td>'.$data['name'].'</td>';
-                                                        echo '<td>'.$data['email'].'</td>';
-                                                        echo '<td>'.$data['phone'].'</td>';
-                                                        echo '<td>'.$data['position'].'</td>';
-                                                        switch ($data['status']){
-                                                            case 0: $status="Not Connected";break;
-                                                            case 1: $status="Free";break;
-                                                            case 2: $status="Busy";break;
-                                                        }
-                                                        switch ($data['status']){
-                                                            case 0: $color="red";break;
-                                                            case 1: $color="green";break;
-                                                            case 2: $color="yellow";break;
-                                                        }
-                                                        echo '<td class="text-center">'.$status.'</td>';
-                                                        echo '<td class="text-center"><div class="p-status bg-'.$color.' mr-10"></div></td>';
+                                                        echo '<td>'.$data['description'].'</td>';
+                                                        echo '<td>'.$data['price'].'</td>';
+                                                        echo '<td>'.$data['qunt'].'</td>';
+                                                        echo '<td>'.$data['valid'].'</td>';
+                                                        echo '<td><a href="edit_product.php?id='.$data['pid'].'&result=1"><button class="btn btn-success">Edit</button></a></td>';
                                                         echo '</tr>';
+                                                        
                                                     }
-                                        
                                                 ?>
                                                 </tbody>
                                             </table>

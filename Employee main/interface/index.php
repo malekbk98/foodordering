@@ -151,6 +151,9 @@
                                 <div class="nav-item">
                                     <a href="pages/liste_employee.php" class="menu-item">Employees List</a>
                                 </div>
+                                <div class="nav-item">
+                                    <a href="pages/product_modif.php" class="menu-item">Modif Product</a>
+                                </div>
                         </nav>
                         </div>
                     </div>

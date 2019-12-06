@@ -142,6 +142,9 @@
                                 <div class="nav-item">
                                     <a href="liste_employee.php" class="menu-item">Employees List</a>
                                 </div>
+                                <div class="nav-item">
+                                    <a href="product_modif.php" class="menu-item">Modif Product</a>
+                                </div>
                         </nav>
                         </div>
                     </div>
@@ -181,7 +184,6 @@
                                                         <th>Order ID</th>
                                                         <th>Quantite</th>
                                                         <th colspan="2">Status</th>
-                                                        <th>Cart ID</th>
                                                         <th>Product ID</th>
                                                         <th colspan="2" class="text-center">Actions</th>
                                                     </tr>
@@ -189,6 +191,7 @@
                                                 <tbody>
                                                     <?php      
                                                     include 'dbconnexion.php';
+                
                                                     $req= $conx->query('SELECT * From orders where oid');
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
@@ -204,8 +207,11 @@
                                                         }
                                                         echo '<td>'.$status.'</td>';
                                                         echo '<td><div class="p-status bg-'.$color.' mr-10"></div></td>';
-                                                        echo '<td>'.$data['caid'].'</td>';
-                                                        echo '<td>'.$data['pid'].'</td>';
+                                                        $req2 = $conx->prepare("select * FROM product WHERE pid=:param_pid");
+                                                        $req2->bindParam(':param_pid',$data['pid']);
+                                                        $req2->execute();
+                                                        $data2= $req2->fetch();
+                                                        echo '<td>'.$data2['name'].':'.$data2['description'].'</td>';
                                                         echo '<td><a href="accept_order.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Accept</button></a></td>';
                                                         echo '<td><a href="delete_order.php?id='.$data['oid'].'"><button class="btn btn-danger">Reject</button></a></td>';
                                                         echo '</tr>';
