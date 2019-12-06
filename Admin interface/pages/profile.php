@@ -25,12 +25,7 @@ include 'check_session.php';
     </head>
 
     <body>
-    <?php
-    session_start();
-    
-
-include 'dbconnexion.php';
-
+    <?php  
 if (!empty($_GET['id'])){
     $id=$id=$_GET['id'];
     $_SESSION["id"]=$id;
@@ -47,6 +42,7 @@ $email= $data['email'];
 $phone= $data['phone'];
 $password= $data['pwd'];
 $position= $data['position'];
+$vehicle= $data['vid'];
 $file=$data['pic'];
 
 ?>
@@ -304,10 +300,30 @@ $file=$data['pic'];
                                                     <div class="form-group">
                                                         <label for="position">Select Position</label>
                                                         <select name="position" id="position" class="form-control">
-                                                            <option value="Employee" >Employee</option>
-                                                            <option value="Dilevery" <?php if($position=="Dilevery"){ echo "selected";} ?>>Dilevery</option>
+                                                            <option value="Employee">Employee</option>
+                                                            <option value="Dilevery"<?php if($position=="Dilevery"){ echo "selected";} ?>>Dilevery</option>
                                                         </select>
                                                     </div>
+                                                    <?php
+                                                        if($position=="Dilevery"){
+                                                    ?>
+                                                    <div class="form-group">
+                                                        <label for="vehicle">Select Vehicle</label>
+                                                        <select name="vehicle" id="vehicle" class="form-control">
+                                                        <option value="null">Select Option</option>
+                                                            <?php
+                                                            $req= $conx->query('SELECT * From vehicle');
+                                                            while($data = $req->fetch()){
+                                                                echo "<option value='".$data['vid']."'";
+                                                                if($data['vid']==$vehicle){echo "selected";}
+                                                                echo ">".$data['vnum']." | ".$data['brand']." | ".$data['model']."</option>";
+                                                            }
+                                                            ?>                                                        
+                                                        </select>
+                                                    </div>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     <button class="btn btn-success" type="submit" name="submit">Update Profile</button>
                                                 </form>                                          
                                             </div>
@@ -321,7 +337,6 @@ $file=$data['pic'];
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
         <script src="../plugins/popper.js/dist/umd/popper.min.js"></script>
         <script src="../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="../plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>

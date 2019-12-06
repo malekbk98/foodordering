@@ -6,7 +6,7 @@ include 'check_session.php';
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Edit product</title>
+        <title>Edit Vehicle</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,12 +27,7 @@ include 'check_session.php';
     </head>
 
     <body>
-    <?php
-    session_start();
-    
-
-include 'dbconnexion.php';
-
+    <?php   
 if (!empty($_GET['id'])){
     $id=$id=$_GET['id'];
     $_SESSION["id"]=$id;
@@ -47,8 +42,6 @@ $data = $req->fetch();
 $vnum= $data['vnum'];
 $brand= $data['brand'];
 $model= $data['model'];
-$eid= $data['eid'];
-
 ?>
 
         <div class="wrapper">
@@ -193,10 +186,6 @@ $eid= $data['eid'];
                                                     <div class="form-group">
                                                         <label for="model">Vehicle Model</label>
                                                         <input type="text" value="<?php echo $model;?>" class="form-control" name="model" id="model" required="">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="eid">Driver ID</label>
-                                                        <input type="text" value="<?php echo $eid;?>" id="eid" name="eid" class="form-control" required="">
                                                     </div>
                                                     <button class="btn btn-success" type="submit" name="submit">Update Vehicle</button>
                                                 </form>                                          

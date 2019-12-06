@@ -6,7 +6,7 @@ include 'check_session.php';
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Manage Vehicle</title>
+        <title>Widget Data | ThemeKit - Admin Template</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -110,7 +110,7 @@ include 'check_session.php';
                                     <a href="../index.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
                                 <div class="nav-lavel">Manage Employees</div>
-                                <div class="nav-item">
+                                <div class="nav-item active">
                                     <a href="employee_list.php" class="menu-item">Employees List</a>
                                 </div>
                                 <div class="nav-item">
@@ -125,10 +125,6 @@ include 'check_session.php';
                                 </div>
                                 <div class="nav-item">
                                     <a href="availbel_product.php" class="menu-item">Availbel Product</a>
-                                </div>
-                                <div class="nav-lavel">Vehicles</div>
-                                <div class="nav-item active">
-                                    <a href="manage_vehicle.php" class="menu-item">Manage Vehicles</a>
                                 </div>
                         </nav>
                         </div>
@@ -160,37 +156,48 @@ include 'check_session.php';
                             <div class="col-xl-12"> 
                                 <div class="card table-card">
                                     <div class="card-header">
-                                        <h3>Vehicles List</h3>
+                                        <h3>Customers List</h3>
                                     </div>
                                     <div class="card-block">
                                         <div class="table-responsive">
                                             <table class="table table-hover mb-0">
                                                 <thead>
                                                     <tr>
-                                                        <th>Vehicle ID</th>
-                                                        <th>Vehicle Num</th>
-                                                        <th>Brand</th>
-                                                        <th>Model</th>
-                                                        <th colspan="2">Actions</th>
+                                                        <th>Customer ID</th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Adress</th>
+                                                        <th colspan="2">Status</th>
+                                                        <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php      
                                                     // header("Refresh:20"); Refresh page each 20s to show any changes.
-                                                   
-                                                    include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From vehicle');
+                                                    $req= $conx->query('SELECT * From customer');
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
-                                                        echo '<td>'.$data['vid'].'</td>';
-                                                        echo '<td>'.$data['vnum'].'</td>';
-                                                        echo '<td>'.$data['brand'].'</td>';
-                                                        echo '<td>'.$data['model'].'</td>';
-                                                        echo '<td><a href="edit_vehicle.php?id='.$data['vid'].'&result=1"><button class="btn btn-success">Edit</button></a>
-                                                        <a href="prod_valid.php?id='.$data['vid'].'&result=0"><button class="btn btn-danger">Delete</button></a></td>';
+                                                        echo '<td>'.$data['cid'].'</td>';
+                                                        echo '<td>'.$data['name'].'</td>';
+                                                        echo '<td>'.$data['email'].'</td>';
+                                                        echo '<td>'.$data['phone'].'</td>';
+                                                        echo '<td>'.$data['adress'].'</td>';
+
+                                                        switch ($data['status']){
+                                                            case 0: $status="Not Connected";break;
+                                                            case 1: $status="Connected";break;
+                                                        }
+                                                        switch ($data['status']){
+                                                            case 0: $color="red";break;
+                                                            case 1: $color="green";break;
+                                                        }
+                                                        echo '<td class="text-center">'.$status.'</td>';
+                                                        echo '<td class="text-center"><div class="p-status bg-'.$color.' mr-10"></div></td>';
+                                                        echo '<td><a href="delete_customer.php?id='.$data['cid'].'"><button class="btn btn-danger">Delete</button></a></td>';
                                                         echo '</tr>';
-                                                        
                                                     }
+                                        
                                                 ?>
                                                 </tbody>
                                             </table>
