@@ -184,7 +184,8 @@
                                                         <th>Order ID</th>
                                                         <th>Quantite</th>
                                                         <th colspan="2">Status</th>
-                                                        <th>Product ID</th>
+                                                        <th>Product</th>
+                                                        <th>Date</th>
                                                         <th colspan="2" class="text-center">Actions</th>
                                                     </tr>
                                                 </thead>
@@ -200,10 +201,13 @@
                                                         switch ($data['status']){
                                                             case 0: $status="Waiting";break;
                                                             case 1: $status="Accepted";break;
+                                                            case 2: $status="Completed";break;
                                                         }
                                                         switch ($data['status']){
                                                             case 0: $color="orange";break;
-                                                            case 1: $color="green";break;
+                                                            case 1: $color="blue";break;
+                                                            case 2: $color="green";break;
+
                                                         }
                                                         echo '<td>'.$status.'</td>';
                                                         echo '<td><div class="p-status bg-'.$color.' mr-10"></div></td>';
@@ -212,7 +216,19 @@
                                                         $req2->execute();
                                                         $data2= $req2->fetch();
                                                         echo '<td>'.$data2['name'].':'.$data2['description'].'</td>';
-                                                        echo '<td><a href="accept_order.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Accept</button></a></td>';
+                                                        echo '<td>'.$data['date'].'</td>';
+                                                        if($data['status']==0){
+                                                            echo '<td><a href="accept_order.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Accept</button></a></td>';
+                                                            
+                                                        }elseif($data['status']==1){
+                                                            echo '<td><a href="accept_order.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Complete</button></a></td>';
+                                                        }else{ 
+
+                                                            if($data['status']==2){
+                                                                echo '<td><a href="accept_order.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">DONE</button></a></td>';
+                                                            }
+                                                        }
+                                                
                                                         echo '<td><a href="delete_order.php?id='.$data['oid'].'"><button class="btn btn-danger">Reject</button></a></td>';
                                                         echo '</tr>';
                                                     }
