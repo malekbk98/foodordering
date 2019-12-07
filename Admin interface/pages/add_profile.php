@@ -172,7 +172,7 @@ include 'check_session.php';
                                         <div class="form-group">
                                                         <label for="pic">Update Picture</label><br>
                                                         <input type="file" name="pic" accept="image/*" value="" required >
-                                                    </div>
+                                        </div>
                                         <div class="form-group">
                                             <label class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" name="position" value="Employee" checked>
