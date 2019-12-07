@@ -140,9 +140,6 @@
                                     <a href="employee_order.php" class="menu-item">Orders List</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="liste_employee.php" class="menu-item">Employees List</a>
-                                </div>
-                                <div class="nav-item">
                                     <a href="product_modif.php" class="menu-item">Modif Product</a>
                                 </div>
                         </nav>
@@ -223,12 +220,10 @@
                                                         }elseif($data['status']==1){
                                                             echo '<td><a href="accept_order.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Complete</button></a></td>';
                                                         }else{ 
-
                                                             if($data['status']==2){
                                                                 echo '<td><a href="accept_order.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">DONE</button></a></td>';
                                                             }
                                                         }
-                                                
                                                         echo '<td><a href="delete_order.php?id='.$data['oid'].'"><button class="btn btn-danger">Reject</button></a></td>';
                                                         echo '</tr>';
                                                     }

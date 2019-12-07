@@ -139,9 +139,6 @@
                                 <div class="nav-item">
                                     <a href="employee_order.php" class="menu-item">Orders List</a>
                                 </div>
-                                <div class="nav-item">
-                                    <a href="liste_employee.php" class="menu-item">Employees List</a>
-                                </div>
                                 <div class="nav-item active">
                                     <a href="product_modif.php" class="menu-item">Modif Product</a>
                                 </div>
