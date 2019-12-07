@@ -185,6 +185,24 @@ include 'check_session.php';
                                                 <span class="custom-control-label">&nbsp;Dilevery</span>
                                             </label>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" name="position" value="Dilevery">
+                                                <span class="custom-control-label">&nbsp;Dilevery</span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="vehicle">Select Vehicle</label>
+                                                        <select name="vehicle" id="vehicle" class="form-control">
+                                                        <option value="null">Select Option</option>
+                                                            <?php
+                                                            $req= $conx->query('SELECT * From vehicle where status="Free"');
+                                                            while($data = $req->fetch()){
+                                                                echo "<option value='".$data['vid']."'>".$data['vnum']." | ".$data['brand']." | ".$data['model']."</option>";
+                                                            }
+                                                            ?>                                                        
+                                                        </select>
+                                        </div>
                                         <button type="submit" name="submit" class="btn btn-primary mr-2">Submit</button>
                                         <button class="btn btn-light">Cancel</button>
                                     </form>

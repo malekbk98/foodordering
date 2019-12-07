@@ -8,7 +8,19 @@
         $pic= $_POST['pic'];
         $vehicle= $_POST['vehicle'];
         include 'dbconnexion.php';
-        if ($pos=="Employee"){$vehicle=null;}
+        if ($pos=="Employee")
+        {
+                $req1= $conx->prepare("UPDATE vehicle SET status='Free' vid='$vehicle'");
+                $req1->execute();  
+                $vehicle=null;
+        }
+        else{
+        $req1= $conx->prepare("UPDATE vehicle SET status='Occupied' vid='$vehicle'");
+        $req1->execute();  
+        }
+        
+        
+        
         if(!empty($pic)){
          $req = $conx->prepare("UPDATE employee SET name=:param_name, email=:param_email, phone=:param_phone, pwd=:param_pwd, position=:param_pos, pic=:param_pic, vid=:param_vid WHERE eid=:param_id");
          $req->bindParam(':param_pic',$pic);
