@@ -34,6 +34,22 @@
                 echo $e->getMessage();
             }
         }
+
+        //Add to cart
+        public function AddToCart($id,$qty){
+            $status=0;
+            $caid=1;
+            try{
+                $req=$this->cnx->prepare('INSERT INTO orders (qunt, status, caid, pid,date) VALUES (:qunt,:status,:caid,:pid, Now())');            
+                $req->bindParam(':qunt',$qty);
+                $req->bindParam(':status',$status);
+                $req->bindParam(':caid',$caid);
+                $req->bindParam(':pid',$id);
+                $req->execute();
+            }catch(PODException $e){
+                echo $e->getMessage();
+            }
+        }
     }
 
 ?>

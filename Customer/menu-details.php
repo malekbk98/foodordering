@@ -123,7 +123,7 @@
                                                     <div class="product-quantity">
                                                         <div class="cart-plus-minus">
                                                             <input type="number" name="id" id="id" value='.$data['pid'].' hidden>
-                                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                                            <input class="cart-plus-minus-box" type="text" name="qty" id="qty" value="1">
                                                             <div class="add__to__cart__btn">
                                                                 <button type="submit" class="food__btn">Add To Cart</button>
                                                             </div>
