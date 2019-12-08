@@ -119,13 +119,13 @@
                                         <div class="product-action-wrap">
                                             <div class="prodict-statas"><span>Food Type : '.$data['type'].'</span></div>
                                             <div class="product-quantity">
-                                                <form id="myform" method="POST" action="addcart.php">
+                                                <form method="POST" action="addcart.php">
                                                     <div class="product-quantity">
+                                                    <input type="number" name="pid" id="pid" value="'.$data['pid'].'" hidden>
                                                         <div class="cart-plus-minus">
-                                                            <input type="number" name="id" id="id" value='.$data['pid'].' hidden>
-                                                            <input class="cart-plus-minus-box" type="text" name="qty" id="qty" value="1">
+                                                            <input  type="number" name="qty" id="qty" value="1">
                                                             <div class="add__to__cart__btn">
-                                                                <button type="submit" class="food__btn">Add To Cart</button>
+                                                            <button type="submit" class="food__btn">Add To Cart</button>
                                                             </div>
                                                         </div>
                                                     </div>

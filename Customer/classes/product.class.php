@@ -36,20 +36,69 @@
         }
 
         //Add to cart
-        public function AddToCart($id,$qty){
-            $status=0;
-            $caid=1;
+        public function AddToCart($pid , $qty){
+            $status=0; 
+            $caid=1; //to be replaced as param from session
             try{
                 $req=$this->cnx->prepare('INSERT INTO orders (qunt, status, caid, pid,date) VALUES (:qunt,:status,:caid,:pid, Now())');            
                 $req->bindParam(':qunt',$qty);
                 $req->bindParam(':status',$status);
                 $req->bindParam(':caid',$caid);
-                $req->bindParam(':pid',$id);
+                $req->bindParam(':pid',$pid);
                 $req->execute();
             }catch(PODException $e){
                 echo $e->getMessage();
             }
         }
+
+        //Get Total from cart
+        public function GetTotal($caid){
+            $total=0;
+            $product=$this->readCart($caid);
+            while ($data=$product->fetch()){
+                $total+=$data['qunt']*$data['price'];
+            }
+            $this->UpdateCart($caid,$total);
+            return $total;
+        }
+
+        //Update Cart
+        public function UpdateCart($caid,$total){
+            try{
+                $req = $this->cnx->prepare("UPDATE cart SET total=:param_total WHERE caid=:param_caid");
+                $req->bindParam(':param_total',$total);
+                $req->bindParam(':param_caid',$caid);
+                $req->execute();
+            }catch (Exception$e){
+                echo $e->getMessage();
+            }
+        }
+
+        //Display Cart
+        public function readCart($caid){
+            try{
+                $req= $this->cnx->prepare("SELECT r.caid,r.oid,r.pid,r.qunt,r.status,p.file,p.name,p.price FROM orders r,product p where r.caid=:param_caid and r.status=0 and r.pid=p.pid");
+                $req->bindParam(':param_caid',$caid);
+                $req->execute();
+                return $req;
+            }catch(PODException $e){
+                echo $e->getMessage();
+            }
+        }
+
+        //Del Cart
+        public function DelCart($oid){
+            try{
+                $req= $this->cnx->prepare("DELETE FROM orders where oid=:param_oid");
+                $req->bindParam(':param_oid',$oid);
+                $req->execute();
+                return $req;
+            }catch(PODException $e){
+                echo $e->getMessage();
+            }
+        }
+
+        
     }
 
 ?>

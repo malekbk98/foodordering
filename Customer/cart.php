@@ -48,35 +48,13 @@
                         </div>
                         <div class="col-lg-9 col-sm-4 col-md-2 order-3 order-lg-2">
                             <div class="main__menu__wrap">
-                                <nav class="main__menu__nav d-none d-lg-block">
+                            <nav class="main__menu__nav d-none d-lg-block">
                                     <ul class="mainmenu">
                                         <li class="drop"><a href="index.html">Home</a></li>
+                                        <li><a href="menu-list.php">Menu</a></li>
                                         <li><a href="about-us.html">About</a></li>
-                                        <li class="drop"><a href="menu-list.html">Menu</a>
-                                            <ul class="dropdown__menu">
-                                                <li><a href="menu-list.html">Menu List</a></li>
-                                                <li><a href="menu-details.html">Menu Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="gallery.html">Gallery</a></li>
-                                        <li class="drop"><a href="blog-mesonry.html">Blog</a>
-                                            <ul class="dropdown__menu">
-                                                <li><a href="blog-mesonry.html">Blog Mesonry</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="drop"><a href="#">Pages</a>
-                                            <ul class="dropdown__menu">
-                                                <li><a href="service.html">Service</a></li>
-                                                <li><a href="cart.html">Cart Page</a></li>
-                                                <li><a href="checkout.html">Checkout Page</a></li>
-                                                <li><a href="contact.html">Contact Page</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
                                     </ul>
-                                </nav>
-                                
+                                </nav>                                
                             </div>
                         </div>
                         <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
@@ -140,53 +118,61 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                        include 'classes/product.class.php';
+                                        $product =new product;
+                                        $products=$product->readCart(1); // to be replaced as caid from session
+                                        $total=$product->GetTotal(1); // to be replaced as caid from session
+                                        while ($data=$products->fetch()){
+                                        echo'
                                         <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="images/cart/1.jpg" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">Standered post formet</a></td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£165.00</td>
-                                            <td class="product-remove"><a href="#">X</a></td>
+                                            <td class="product-thumbnail"><a href="#"><img src="images/menu-list/'.$data['file'].'" alt="product img" /></a></td>
+                                            <td class="product-name"><a href="#">'.$data['name'].'</a></td>
+                                            <td class="product-price"><span class="amount">'.$data['price'].' DTN</span></td>
+                                            <td class="product-quantity"><input type="number" value="'.$data['qunt'].'" /></td>
+                                            <td class="product-subtotal">'.$data['qunt']*$data['price'].'</td>
+                                            <td class="product-remove"><a href="delete_cart.php?oid='.$data['oid'].'"><span class="badge badge-danger">X</span></a></td>
                                         </tr>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="images/cart/2.jpg" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">Standered post formet</a></td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£50.00</td>
-                                            <td class="product-remove"><a href="#">X</a></td>
-                                        </tr>
+                                        ';}
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
                         </form> 
-                        <div class="cartbox__btn">
-                            <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-                                <li><a href="#">Coupon Code</a></li>
-                                <li><a href="#">Apply Code</a></li>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <div class="cartbox__total__area">
+                            <div class="cartbox-total d-flex justify-content-between">
+                                <ul class="cart__total__list">
+                                <?php //to review this
+                                    $products=$product->readCart(1);
+                                    while ($data=$products->fetch()){
+                                    echo'<li>'.$data['name'].'</li>';}
+                                ?>
+                                </ul>
+                                <ul class="cart__total__tk">
+                                    <?php
+                                    $products=$product->readCart(1);
+                                    while ($data=$products->fetch()){
+                                    echo'<li>'.$data['qunt']*$data['price'].' DTN</li>';}
+                                    ?>
+                                </ul>
+                            </div>
+
+                            <div class="cart__total__amount">
+                            <?php
+                                echo'<span>Total</span>
+                                <span>'.$total.' DTN</span>';
+                            ?>
+                            </div>
+                            <div class="cartbox__btn">
+                            <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-contenbetweent-">
                                 <li><a href="#">Update Cart</a></li>
                                 <li><a href="#">Check Out</a></li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-6">
-                        <div class="cartbox__total__area">
-                            <div class="cartbox-total d-flex justify-content-between">
-                                <ul class="cart__total__list">
-                                    <li>Cart total</li>
-                                    <li>Sub Total</li>
-                                </ul>
-                                <ul class="cart__total__tk">
-                                    <li>$70</li>
-                                    <li>$70</li>
-                                </ul>
-                            </div>
-                            <div class="cart__total__amount">
-                                <span>Grand Total</span>
-                                <span>$140</span>
-                            </div>
                         </div>
                     </div>
                 </div>
