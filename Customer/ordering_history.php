@@ -56,7 +56,7 @@ $items_nb=$array[1];
                                         <li><a href="ordering_history.php">Ordering History</a></li>
                                         <li><a href="about-us.html">About</a></li>
                                     </ul>
-                                </nav> 
+                                </nav>                                
                             </div>
                         </div>
                         <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
@@ -81,85 +81,48 @@ $items_nb=$array[1];
             <!-- End Mainmenu Area -->
         </header>
         <!-- End Header Area -->
-        <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area bg-image--18">
-            <div class="ht__bradcaump__wrap d-flex align-items-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">menu List view</h2>
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.html">Home</a>
-                                  <span class="brd-separetor"><i class="zmdi zmdi-long-arrow-right"></i></span>
-                                  <span class="breadcrumb-item active">menu List view</span>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Bradcaump area --> 
-        <!-- Start Menu Grid Area -->
-        <section class="food__menu__grid__area section-padding--lg">
+        <!-- cart-main-area start -->
+        <div class="cart-main-area section-padding--lg bg--white">
             <div class="container">
-                <div class="row mt--30">
-                    <div class="col-lg-12">
-                        <div class="fd__tab__content tab-content" id="nav-tabContent">
-                            <!-- Start Single Content -->
-                            <div class="food__list__tab__content tab-pane fade show active" id="nav-all" role="tabpanel">
-                                <!-- Start Single Food -->
-                                <?php
-                                $products =$product->readAllProduct();
-                                while ($data=$products->fetch()){
-                                    echo'
-                                <div class="single__food__list d-flex wow fadeInUp">
-                                    <div class="food__list__thumb">
-                                        <a href="menu-details.php?id='.$data['pid'].'">
-                                            <img src="images/menu-list/'.$data['file'].'" alt="list food images">
-                                        </a>
-                                    </div>
-                                    <div class="food__list__inner d-flex align-items-center justify-content-between">
-                                        <div class="food__list__details">
-                                            <h2><a href="menu-details.php?id='.$data['pid'].'">'.$data['name'].'</a></h2>
-                                            <p>'.$data['description'].'</p>
-                                            <div class="list__btn">
-                                                <a class="food__btn grey--btn theme--hover" href="menu-details.php?id='.$data['pid'].'">Order Now</a>
-                                            </div>
-                                        </div>
-                                        <div class="food__rating">
-                                            <div class="list__food__prize">
-                                                <span>'.$data['price'].'DTN</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>';}
-                                ?>
-                                <!-- End Single Food -->
-                            </div>
-                            <!-- End Single Content -->
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="food__pagination d-flex justify-content-center align-items-center mt--130">
-                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#">7</a></li>
-                            <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                        </ul>
+                    <div class="col-md-12 col-sm-12 ol-lg-12">
+                        <form action="#">               
+                            <div class="table-content table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr class="title-top">
+                                            <th class="product-thumbnail">Image</th>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-price">Price</th>
+                                            <th class="product-quantity">Quantity</th>
+                                            <th class="product-subtotal">Total</th>
+                                            <th class="product-remove">Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                        $products=$product->readCartHistory(1); // to be replaced as caid from session
+                                        while ($data=$products->fetch()){
+                                        echo'
+                                        <tr>
+                                            <td class="product-thumbnail"><a href="menu-details.php?id='.$data['pid'].'"><img src="images/menu-list/'.$data['file'].'" alt="product img" /></a></td>
+                                            <td class="product-name"><a href="menu-details.php?id='.$data['pid'].'">'.$data['name'].'</a></td>
+                                            <td class="product-price"><span class="amount">'.$data['price'].' DTN</span></td>
+                                            <td class="product-price"><span class="amount">'.$data['qunt'].'</span></td>
+                                            <td class="product-subtotal">'.$data['qunt']*$data['price'].'</td>
+                                            <td class="product-subtotal">'.$data['date'].'</td>
+                                        </tr>
+                                        ';}
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form> 
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- End Menu Grid Area -->
+            </div>  
+        </div>
+        <!-- cart-main-area end -->
         <!-- Start Footer Area -->
         <footer class="footer__area footer--1">
             <div class="footer__wrapper bg__cat--1 section-padding--lg">
@@ -234,7 +197,7 @@ $items_nb=$array[1];
         </footer>
         <!-- End Footer Area -->
             <!-- Cartbox -->
-            <div class="cartbox-wrap">
+        <div class="cartbox-wrap">
             <div class="cartbox text-right">
                 <button class="cartbox-close"><i class="zmdi zmdi-close"></i></button>
                 <div class="cartbox__inner text-left">

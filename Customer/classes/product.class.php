@@ -37,7 +37,7 @@
 
         //Add to cart
         public function AddToCart($pid , $qty){
-            $status=0; 
+            $status=-1; 
             $caid=1; //to be replaced as param from session
             try{
                 $req=$this->cnx->prepare('INSERT INTO orders (qunt, status, caid, pid,date) VALUES (:qunt,:status,:caid,:pid, Now())');            
@@ -54,12 +54,14 @@
         //Get Total from cart
         public function GetTotal($caid){
             $total=0;
+            $items_nb=0;
             $product=$this->readCart($caid);
             while ($data=$product->fetch()){
                 $total+=$data['qunt']*$data['price'];
+                $items_nb++;
             }
             $this->UpdateCart($caid,$total);
-            return $total;
+            return array($total, $items_nb);
         }
 
         //Update Cart
@@ -77,7 +79,19 @@
         //Display Cart
         public function readCart($caid){
             try{
-                $req= $this->cnx->prepare("SELECT r.caid,r.oid,r.pid,r.qunt,r.status,p.file,p.name,p.price FROM orders r,product p where r.caid=:param_caid and r.status=0 and r.pid=p.pid");
+                $req= $this->cnx->prepare("SELECT r.caid,r.oid,r.pid,r.qunt,r.status,p.file,p.name,p.price FROM orders r,product p where r.caid=:param_caid and r.status=-1 and r.pid=p.pid");
+                $req->bindParam(':param_caid',$caid);
+                $req->execute();
+                return $req;
+            }catch(PODException $e){
+                echo $e->getMessage();
+            }
+        }
+
+        //Display Cart History
+        public function readCartHistory($caid){
+            try{
+                $req= $this->cnx->prepare("SELECT r.date,r.caid,r.oid,r.pid,r.qunt,r.status,p.file,p.name,p.price FROM orders r,product p where r.caid=:param_caid and r.status=3 and r.pid=p.pid");
                 $req->bindParam(':param_caid',$caid);
                 $req->execute();
                 return $req;
