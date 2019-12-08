@@ -304,14 +304,15 @@ $file=$data['pic'];
                                                     <div class="form-group">
                                                         <label for="vehicle">Select Vehicle</label>
                                                         <select name="vehicle" id="vehicle" class="form-control">
-                                                        <option value="">Select Option</option>
+                                                        <option value="null">Select Option</option>
                                                             <?php
-                                                            $req= $conx->query('SELECT * From vehicle');
+                                                            $req=$admin->readAllVehicle();
                                                             while($data = $req->fetch()){
+                                                                if($data['vid']==$vehicle || $data['status']=="Free"){
                                                                 echo "<option value='".$data['vid']."'";
                                                                 if($data['vid']==$vehicle){echo "selected";}
                                                                 echo ">".$data['vnum']." | ".$data['brand']." | ".$data['model']."</option>";
-                                                            }
+                                                            }}
                                                             ?>                                                        
                                                         </select>
                                                     </div>

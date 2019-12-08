@@ -1,5 +1,7 @@
 <?php
 include 'check_session.php';
+include 'classes/admin.class.php';  
+$admin=new admin;
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -177,10 +179,7 @@ include 'check_session.php';
                                                 </thead>
                                                 <tbody>
                                                     <?php      
-                                                    // header("Refresh:20"); Refresh page each 20s to show any changes.
-                                                   
-                                                    include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From product where valid="pending"');
+                                                    $req=$admin->readPro("pending");
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['pid'].'</td>';

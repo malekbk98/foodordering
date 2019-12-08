@@ -42,7 +42,6 @@ $data = $req->fetch();
 $name= $data['name'];
 $description= $data['description'];
 $price= $data['price'];
-$qunt= $data['qunt'];
 $valid= $data['valid'];
 $file= $data['file'];
 
@@ -195,10 +194,6 @@ $file= $data['file'];
                                                     <div class="form-group">
                                                         <label for="price">Price</label>
                                                         <input type="text" value="<?php echo $price;?>" class="form-control" name="price" id="price" required="">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="qunt">Availbel Quantity</label>
-                                                        <input type="text" value="<?php echo $qunt;?>" id="qunt" name="qunt" class="form-control" required="">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="file">Update Picture</label><br>

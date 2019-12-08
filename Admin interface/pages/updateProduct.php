@@ -6,7 +6,14 @@
         $qunt= $_POST['qunt'];
         $valid= $_POST['valid'];
         $pic= $_POST['pic'];
-        include 'dbconnexion.php';
+        
+        include 'classes/admin.class.php';  
+        $admin=new admin;
+        $req=$admin->UpdateProduct($id,$name,$email,$phone,$pwd,$pos,$pic,$vehicle);
+
+
+
+
         if (!empty($pic)){
         $req = $conx->prepare("UPDATE product SET name=:param_name, description=:param_description, price=:param_price, valid=:param_valid, qunt=:param_qunt, file=:param_pic WHERE pid=:param_id");
         $req->bindParam(':param_pic',$pic);

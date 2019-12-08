@@ -1,5 +1,7 @@
 <?php
 include 'check_session.php';
+include 'classes/admin.class.php';  
+$admin=new admin;
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -181,7 +183,7 @@ include 'check_session.php';
                                                     // header("Refresh:20"); Refresh page each 20s to show any changes.
                                                    
                                                     include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From product where valid!="pending"');
+                                                    $req=$admin->readPro("availbel");
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['pid'].'</td>';
@@ -189,7 +191,7 @@ include 'check_session.php';
                                                         echo '<td>'.$data['description'].'</td>';
                                                         echo '<td>'.$data['price'].'</td>';
                                                         echo '<td>'.$data['valid'].'</td>';
-                                                        echo '<td><a href="edit_product.php?id='.$data['pid'].'&result=1"><button class="btn btn-success">Edit</button></a>
+                                                        echo '<td><a href="edit_product.php?id='.$data['pid'].'"><button class="btn btn-success">Edit</button></a>
                                                         <a href="prod_valid.php?id='.$data['pid'].'&result=0"><button class="btn btn-danger">Delete</button></a></td>';
                                                         echo '</tr>';
                                                         

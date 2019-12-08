@@ -16,8 +16,7 @@ class admin
     public function login($email, $password)
     {   $pos="Admin";
         try {
-            $sql = "SELECT * FROM employee WHERE email= :email and position=:pos";
-            $query = $this->pdo->prepare($sql);
+            $query = $this->pdo->prepare("SELECT * FROM employee WHERE email= :email and position=:pos");
             $query->bindparam(":email", $email);
             $query->bindparam(":pos", $pos);
             $query->execute();
@@ -37,8 +36,7 @@ class admin
     public function readEmpById($id)
     {
         try {
-            $sql = "SELECT * FROM employee WHERE eid=:id";
-            $query = $this->pdo->prepare($sql);
+            $query = $this->pdo->prepare("SELECT * FROM employee WHERE eid=:id");
             $query->bindparam(":id", $id);
             $query->execute();
             return $query;
@@ -52,8 +50,7 @@ class admin
     public function readAllEmp()
     {   $pos="Admin";
         try {
-            $sql = "SELECT * FROM employee WHERE position!=:pos";
-            $query = $this->pdo->prepare($sql);
+            $query = $this->pdo->prepare("SELECT * FROM employee WHERE position!=:pos");
             $query->bindparam(":pos", $pos);
             $query->execute();
             return $query;
@@ -91,19 +88,42 @@ class admin
     }
 }
 
+    //Read All vehicle
+    public function readAllVehicle(){
+       try {
+            $query = $this->pdo->prepare("SELECT * FROM vehicle");
+            $query->execute();
+            return $query;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
 
     //Update Vehicle Status
     public function UpdateVehicleStatus($id,$status){
         try{
             $req = $this->pdo->prepare("UPDATE vehicle SET status='$status' WHERE vid=:param_id");
                 $req->bindParam(':param_id',$id);
-               // $req->bindPram(':param_status',$status);
                 $req->execute();
         }catch (Exception$e){
             echo $e->getMessage();
            }
         }
-    
+
+    //Update Vehicle
+    public function UpdateVehicle($id,$vnum,$brand,$model){
+        try{
+            $req = $this->pdo->prepare("UPDATE vehicle SET vnum=:param_vnum, brand=:param_brand, model=:param_model WHERE vid=:param_id");
+            $req->bindParam(':param_vnum',$vnum);
+            $req->bindParam(':param_brand',$brand);
+            $req->bindParam(':param_model',$model);
+            $req->bindParam(':param_id',$id);
+            $req->execute();
+        }catch (Exception$e){
+            echo $e->getMessage();
+           }
+        }
 
 
     //Update Employee
@@ -134,6 +154,61 @@ class admin
        }
     }
     
+    //Delete Employee
+    public function DeleteEmployee($id){
+        $req = $this->pdo->prepare("DELETE FROM employee WHERE eid=:param_id");
+        $req->bindParam(':param_id',$id);
+        $req->execute();
+    }
+
+
+    
+     //Read Product
+     public function readPro($status){
+        try {
+             $query=$this->pdo->prepare("SELECT * FROM product where valid=:param_valid");
+             $query->bindParam(':param_valid',$status);
+             $query->execute();
+             return $query;
+         } catch (PDOException $ex) {
+             echo $ex->getMessage();
+         }
+     }   
+
+     //Update Product
+     public function UpdateProduct($id,$name,$description,$price,$qunt,$valid,$pic){
+       try {
+            if (!empty($pic)){
+                $req = $this->pdo->prepare->prepare("UPDATE product SET name=:param_name, description=:param_description, price=:param_price, valid=:param_valid, qunt=:param_qunt, file=:param_pic WHERE pid=:param_id");
+            }else{
+                $req = $conx->prepare("UPDATE product SET name=:param_name, description=:param_description, price=:param_price, valid=:param_valid, qunt=:param_qunt WHERE pid=:param_id");
+            }
+            $req->bindParam(':param_name',$name);
+            $req->bindParam(':param_description',$description);
+            $req->bindParam(':param_price',$price);
+            $req->bindParam(':param_qunt',$qunt);
+            $req->bindParam(':param_pic',$pic);
+            $req->bindParam(':param_valid',$valid);
+            $req->bindParam(':param_id',$id);
+            $req->execute();
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+
+
+
+
+
+
+
+    //Delete Customer
+    public function DeleteCustomer($id){
+        $req = $this->pdo->prepare("DELETE FROM customer WHERE cid=:param_id");
+        $req->bindParam(':param_id',$id);
+        $req->execute();
+    }
 
 }
 ?>

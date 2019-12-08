@@ -1,8 +1,7 @@
 <?php
 $id=$_GET['id'];
-        include 'dbconnexion.php';
-        $req = $conx->prepare("DELETE FROM employee WHERE eid=:param_id");
-        $req->bindParam(':param_id',$id);
-        $req->execute();
-        header("Location: employee_list.php?msg=Deleted successfully");
+include 'classes/admin.class.php';  
+$admin=new admin;
+$admin->DeleteEmployee($id);
+header("Location: employee_list.php?msg=Deleted successfully");
 ?>
