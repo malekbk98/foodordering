@@ -169,7 +169,8 @@ include 'check_session.php';
                                                 <thead>
                                                     <tr>
                                                         <th>Customer ID</th>
-                                                        <th>Name</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
                                                         <th>Email</th>
                                                         <th>Phone</th>
                                                         <th>Adress</th>
@@ -184,7 +185,8 @@ include 'check_session.php';
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['cid'].'</td>';
-                                                        echo '<td>'.$data['name'].'</td>';
+                                                        echo '<td>'.$data['first_name'].'</td>';
+                                                        echo '<td>'.$data['last_name'].'</td>';
                                                         echo '<td>'.$data['email'].'</td>';
                                                         echo '<td>'.$data['phone'].'</td>';
                                                         echo '<td>'.$data['adress'].'</td>';

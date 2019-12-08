@@ -172,7 +172,6 @@ include 'check_session.php';
                                                         <th>Name</th>
                                                         <th>Description</th>
                                                         <th>Price</th>
-                                                        <th>Quantity</th>
                                                         <th>Availability</th>
                                                         <th colspan="3">Actions</th>
                                                     </tr>
@@ -189,7 +188,6 @@ include 'check_session.php';
                                                         echo '<td>'.$data['name'].'</td>';
                                                         echo '<td>'.$data['description'].'</td>';
                                                         echo '<td>'.$data['price'].'</td>';
-                                                        echo '<td>'.$data['qunt'].'</td>';
                                                         echo '<td>'.$data['valid'].'</td>';
                                                         echo '<td><a href="edit_product.php?id='.$data['pid'].'&result=1"><button class="btn btn-success">Edit</button></a>
                                                         <a href="prod_valid.php?id='.$data['pid'].'&result=0"><button class="btn btn-danger">Delete</button></a></td>';

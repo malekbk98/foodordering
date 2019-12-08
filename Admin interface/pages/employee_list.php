@@ -179,10 +179,9 @@ include 'check_session.php';
                                                 </thead>
                                                 <tbody>
                                                     <?php      
-                                                    // header("Refresh:20"); Refresh page each 20s to show any changes.
-                                                   
-                                                    include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From employee where position <> "admin"');
+                                                        include 'classes/admin.class.php';  
+                                                        $admin=new admin;
+                                                        $req=$admin->readAllEmp();
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['eid'].'</td>';
@@ -209,9 +208,9 @@ include 'check_session.php';
                                         
                                                 ?>
                                                 </tbody>
-                                            </table>
+                                            </table><br>
                                             <?php  if(!empty($_GET['msg']))
-                                                    {echo $_GET['msg'];};?>
+                                                    {echo $_GET['msg'];}?>
                                         </div>
 
                                     </div>

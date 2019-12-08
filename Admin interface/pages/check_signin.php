@@ -38,6 +38,7 @@
                             </div>
                             <h3>Admin LogIn</h3>
                             <p>Happy to see you again!</p>
+                            <?php if (isset($auth_error)) echo $auth_error; ?>
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="Email" placeholder="Email" required="" value="<?= $_POST['Email'] ?? '' ?>">

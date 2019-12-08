@@ -33,9 +33,9 @@ if (!empty($_GET['id'])){
     $id=$_SESSION["id"];
 }
 
-$req = $conx->prepare("SELECT * FROM employee where eid=:param_id");
-$req->bindParam(':param_id',$id);
-$req->execute();
+include 'classes/admin.class.php';  
+$admin=new admin;
+$req=$admin->readEmpById($id);
 $data = $req->fetch();
 $name= $data['name'];
 $email= $data['email'];
@@ -304,7 +304,7 @@ $file=$data['pic'];
                                                     <div class="form-group">
                                                         <label for="vehicle">Select Vehicle</label>
                                                         <select name="vehicle" id="vehicle" class="form-control">
-                                                        <option value="null">Select Option</option>
+                                                        <option value="">Select Option</option>
                                                             <?php
                                                             $req= $conx->query('SELECT * From vehicle');
                                                             while($data = $req->fetch()){
