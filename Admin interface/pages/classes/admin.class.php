@@ -57,6 +57,37 @@ class admin
             echo $ex->getMessage();
         }
     }
+
+    
+/*********************************Time Line Start*************************************** */
+    //Get Employee
+    public function GetEmploye($id){
+        try {
+            $query = $this->pdo->prepare("SELECT * From processing where eid=:id");
+            $query->bindparam(":id", $id);
+            $query->execute();
+            return $query;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    //Get Order By Cart
+    public function GetOrderByCart($id){
+        try {
+            $query = $this->pdo->prepare("SELECT * From orders where caid=:id");
+            $query->bindparam(":id", $id);
+            $query->execute();
+            return $query;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+
+    }
+
+
+/*********************************Time Line End ************************************************** */
+      
     
 
 
@@ -174,7 +205,7 @@ class admin
     }
 
 
-     //Read Product
+     //Read Product By ID
      public function readProByID($id){
         try {
              $query=$this->pdo->prepare("SELECT * FROM product where pid=:param_id");

@@ -205,7 +205,15 @@ $file=$data['pic'];
                                             <div class="card-body">
                                                 <div class="profiletimeline mt-0">
                                                     <?php
-                                                    
+                                                    include 'dbconnexion.php';
+                                                      /*
+                                                       $req1=$admin->GetEmploye($id);
+                                                     while($data1 = $req1->fetch()){
+                                                         $req2=$admin->GetOrderByCart(1);
+                                                         while($data2 = $req2->fetch()){
+                                                                $req3=$admin->readProByID(9);
+                                                                  while($data3 = $req3->fetch()){ 
+                                                    */                  
                                                       $req1= $conx->query("SELECT * From processing where eid='$id'");
                                                       while($data1 = $req1->fetch()){ 
                                                           $caid=$data1['caid'];
