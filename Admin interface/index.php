@@ -66,8 +66,7 @@ include 'pages/statistic.php';
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                                     <h6 class="dropdown-item"><?php echo $data['name'];?></h6>
-                                    <a class="dropdown-item" href="profile.html"><i class="ik ik-user dropdown-icon"></i> Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="ik ik-settings dropdown-icon"></i> Settings</a>
+                                    <a class="dropdown-item" href="pages/profile.php?id=<?php echo $data['eid'];?>"><i class="ik ik-user dropdown-icon"></i> Profile</a>
                                     <a class="dropdown-item" href="pages/destroy_session.php"><i class="ik ik-power dropdown-icon"></i>Logout</a>
                                 </div>
                             </div>
@@ -81,10 +80,7 @@ include 'pages/statistic.php';
                 <div class="app-sidebar colored">
                     <div class="sidebar-header">
                         <a class="header-brand" href="index.html">
-                            <div class="logo-img">
-                                <img src="src/img/brand-white.svg" class="header-brand-img" alt="lavalite">
-                            </div>
-                            <span class="text">ThemeKit</span>
+                            <span class="text">Food Factory</span>
                         </a>
                         <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
                         <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
@@ -297,8 +293,7 @@ include 'pages/statistic.php';
                 </div>
                 <footer class="footer">
                     <div class="w-100 clearfix">
-                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2018 ThemeKit v2.0. All Rights Reserved.</span>
-                        <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://lavalite.org/" class="text-dark" target="_blank">Lavalite</a></span>
+                        <span class="text-center text-sm-left d-md-inline-block">Copyright © 2019 FoodOrdering All Rights Reserved.</span>
                     </div>
                 </footer>
             </div>

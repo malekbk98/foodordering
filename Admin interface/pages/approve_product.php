@@ -39,65 +39,41 @@ include 'check_session.php';
                         </div>
                         <div class="top-menu d-flex align-items-center">
                             <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-bell"></i><span class="badge bg-danger">3</span></a>
+                                <a class="nav-link dropdown-toggle" href="#" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-bell"></i><?php if($prod_app!=0){echo "<span class='badge bg-danger'>".$prod_app."</span>";}?></a>
                                 <div class="dropdown-menu dropdown-menu-right notification-dropdown" aria-labelledby="notiDropdown">
                                     <h4 class="header">Notifications</h4>
                                     <div class="notifications-wrap">
-                                        <a href="#" class="media">
-                                            <span class="d-flex">
-                                                <i class="ik ik-check"></i> 
-                                            </span>
-                                            <span class="media-body">
-                                                <span class="heading-font-family media-heading">Invitation accepted</span> 
-                                                <span class="media-content">Your have been Invited ...</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="media">
-                                            <span class="d-flex">
-                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
-                                            </span>
-                                            <span class="media-body">
-                                                <span class="heading-font-family media-heading">Steve Smith</span> 
-                                                <span class="media-content">I slowly updated projects</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="media">
+                                    <?php if($prod_app!=0){
+                                        echo '<a href="approve_product.php" class="media">
                                             <span class="d-flex">
                                                 <i class="ik ik-calendar"></i> 
                                             </span>
                                             <span class="media-body">
-                                                <span class="heading-font-family media-heading">To Do</span> 
-                                                <span class="media-content">Meeting with Nathan on Friday 8 AM ...</span>
+                                            <span class="media-content">You have '.$prod_app.' Products to approuve</span>
                                             </span>
-                                        </a>
+                                        </a>'
+                                    ;}?>
                                     </div>
-                                    <div class="footer"><a href="javascript:void(0);">See all activity</a></div>
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="../img/users/<?php echo $ad_pic;?>" alt=""></a>
-                                
+                                <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="../img/users/<?php echo $data['pic'];?>" alt=""></a>
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                    <h6  class="dropdown-item"><?php echo $ad_name;?></h6>
-                                    <a class="dropdown-item" href="profile.html"><i class="ik ik-user dropdown-icon"></i> Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="ik ik-settings dropdown-icon"></i> Settings</a>
+                                    <h6 class="dropdown-item"><?php echo $data['name'];?></h6>
+                                    <a class="dropdown-item" href="profile.php?id=<?php echo $data['eid'];?>"><i class="ik ik-user dropdown-icon"></i> Profile</a>
                                     <a class="dropdown-item" href="destroy_session.php"><i class="ik ik-power dropdown-icon"></i>Logout</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </header>
-
             <div class="page-wrap">
                 <div class="app-sidebar colored">
                     <div class="sidebar-header">
-                        <a class="header-brand" href="index.php">
-                            <div class="logo-img">
-                               <img src="../src/img/brand-white.svg" class="header-brand-img" alt="lavalite"> 
-                            </div>
-                            <span class="text">ThemeKit</span>
+                    <a class="header-brand" href="index.php">
+                            <span class="text">Food Factory</span>
                         </a>
                         <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
                         <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
@@ -148,9 +124,8 @@ include 'check_session.php';
                                                 <a href="../index.php"><i class="ik ik-home"></i></a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="#">Widgets</a>
+                                                <a href="approve_product.php">Approuve Product</a>
                                             </li>
-                                            <li class="breadcrumb-item active" aria-current="page">Widget Data</li>
                                         </ol>
                                     </nav>
                                 </div>

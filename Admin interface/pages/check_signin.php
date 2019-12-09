@@ -34,7 +34,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
                         <div class="authentication-form mx-auto">
                             <div class="logo-centered">
-                                <a href="../index.html"><img src="../src/img/brand.svg" alt=""></a>
+                                <a href="../index.php"><img src="../src/img/brand.svg" alt=""></a>
                             </div>
                             <h3>Admin LogIn</h3>
                             <p>Happy to see you again!</p>
