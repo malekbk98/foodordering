@@ -13,7 +13,7 @@
         //Display all
         public function readAllProduct(){
             try{
-                $req='SELECT * FROM product';
+                $req='SELECT * FROM product where valid="availbel"';
                 $result=$this->cnx->prepare($req);
                 $result->execute();
                 return $result;
@@ -76,6 +76,17 @@
             }
         }
 
+        // checkout
+        public function checkout($caid){
+            try{
+                $req = $this->cnx->prepare("UPDATE orders SET status='0' WHERE caid=:param_caid");
+                $req->bindParam(':param_caid',$caid);
+                $req->execute();
+            }catch (Exception$e){
+                echo $e->getMessage();
+            }
+        }
+
         //Display Cart
         public function readCart($caid){
             try{
@@ -113,6 +124,18 @@
         }
 
         
+        //Display Cart 
+        public function readTrack($caid){
+            try{
+                $req= $this->cnx->prepare("SELECT r.caid,r.oid,r.pid,r.qunt,r.status,p.file,p.name,p.price FROM orders r,product p where r.caid=:param_caid and r.status=0 and r.pid=p.pid");
+                $req->bindParam(':param_caid',$caid);
+                $req->execute();
+                return $req;
+            }catch(PODException $e){
+                echo $e->getMessage();
+            }
+        }
+
     }
 
 ?>

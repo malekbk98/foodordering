@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Food Ordering</title>
+	<title>Track Order</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,10 +17,10 @@
 	<link rel="stylesheet" href="style.css">
 
 	<!-- Cusom css -->
- <link rel="stylesheet" href="css/custom.css">
+   <link rel="stylesheet" href="css/custom.css">
 
- <!-- Modernizer js -->
- <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+	<!-- Modernizer js -->
+	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
 <body>
 
@@ -31,7 +31,6 @@ $array=$product->GetTotal(1); // to be replaced as caid from session
 $total=$array[0];
 $items_nb=$array[1];
 ?>
-
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
 		<!-- Start Header Area -->
@@ -42,7 +41,7 @@ $items_nb=$array[1];
                     <div class="row">
                         <div class="col-lg-2 col-sm-4 col-md-6 order-1 order-lg-1">
                             <div class="logo">
-                                <a href="index.php">
+                            <a href="index.php">
                                     <img src="images/logo/foody.png" alt="logo images" class="img-fluid">
                                 </a>
                             </div>
@@ -56,7 +55,7 @@ $items_nb=$array[1];
                                         <li><a href="cart.php">Cart</a></li>
                                         <li><a href="ordering_history.php">Ordering History</a></li>
                                     </ul>
-                                </nav> 
+                                </nav>                                
                             </div>
                         </div>
                         <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
@@ -74,86 +73,65 @@ $items_nb=$array[1];
                         </div>
                     </div>
                     <!-- Mobile Menu -->
-                    <div class="mobile-menu d-block d-lg-none"></div>
+                        <div class="mobile-menu d-block d-lg-none"></div>
                     <!-- Mobile Menu -->
                 </div>
             </div>
             <!-- End Mainmenu Area -->
         </header>
         <!-- End Header Area -->
-        <!-- Start Slider Area -->
-        <div class="slider__area slider--one">
-            <div class="slider__activation">
-                <!-- Start Single Slide -->
-                <div class="slide fullscreen bg-image--1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="slider__content">
-                                        <div class="slider__inner">
-                                                <h1>food ordering & delivery</h1>
-                                                <div class="slider__input">                                                   <div class="src__btn">
-                                                        <a href="menu-list.php">Start Ordering</a>
-                                                    </div>
-                                                </div>
-                                 </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Slide -->
-            </div>
-        </div>
-        <!-- End Slider Area -->
-        <!-- Start Service Area -->
-        <section class="fd__service__area bg-image--2 section-padding--xlg">
+        <!-- cart-main-area start -->
+        <div class="cart-main-area section-padding--lg bg--white">
             <div class="container">
-                <div class="service__wrapper bg--white">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12">
-                            <div class="section__title service__align--left">
-                                <p>The process of our service</p>
-                                <h2 class="title__line">How it work</h2>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 ol-lg-12">
+                        <form action="#">               
+                            <div class="table-content table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr class="title-top">
+                                            <th class="product-thumbnail">Image</th>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-price">Status</th>
+                                            <th class="product-quantity">Quantity</th>
+                                            <th class="product-subtotal">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                        $products=$product->readTrack(1); // to be replaced as caid from session
+                                        while ($data=$products->fetch()){
+                                            switch ($data['status']) {
+                                                case 0:
+                                                    $sta="Pending";
+                                                    break;
+                                                case 1:
+                                                    $sta="Accepted";
+                                                    break;
+                                                case 2:
+                                                    $sta="Out For Delivery";
+                                                    break;
+
+                                                }
+                                        echo'
+                                        <tr>
+                                            <td class="product-thumbnail"><a href="menu-details.php?id='.$data['pid'].'"><img src="images/menu-list/'.$data['file'].'" alt="product img" /></a></td>
+                                            <td class="product-name"><a href="menu-details.php?id='.$data['pid'].'">'.$data['name'].'</a></td>
+                                            <td class="product-price"><span class="amount">'.$sta.'</span></td>
+                                            <td class="product-price"><span class="amount">'.$data['qunt'].'</span></td>
+                                            <td class="product-subtotal">'.$data['qunt']*$data['price'].'</td>
+                                        </tr>
+                                        ';}
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row mt--30">
-                        <!-- Start Single Service -->
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div class="service">
-                                <div class="service__title">
-                                    <div class="ser__icon">
-                                        <img src="images/icon/color-icon/2.png" alt="icon image">
-                                    </div>
-                                    <h2><a href="menu-list.php">Select, you love to eat</a></h2>
-                                </div>
-                                <div class="service__details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Service -->
-                        <!-- Start Single Service -->
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div class="service">
-                                <div class="service__title">
-                                    <div class="ser__icon">
-                                        <img src="images/icon/color-icon/3.png" alt="icon image">
-                                    </div>
-                                    <h2>Delivery</h2>
-                                </div>
-                                <div class="service__details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Service -->
+                        </form> 
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- End Service Area -->
+            </div>  
+        </div>
+        <!-- cart-main-area end -->
         <!-- Start Footer Area -->
         <footer class="footer__area footer--1">
             <div class="footer__wrapper bg__cat--1 section-padding--lg">
@@ -162,7 +140,7 @@ $items_nb=$array[1];
                         <!-- Start Single Footer -->
                         <div class="col-md-6 col-lg-6 col-sm-12">
                             <div class="footer">
-                                <h2 class="ftr__title">About Aahar</h2>
+                                <h2 class="ftr__title">About Food Factory</h2>
                                 <div class="footer__inner">
                                     <div class="ftr__details">
                                         <p>Lorem ipsum dolor sit amconsectetur adipisicing elit,</p>
@@ -189,7 +167,7 @@ $items_nb=$array[1];
                                                     <i class="zmdi zmdi-email"></i>
                                                 </div>
                                                 <div class="frt__address__details">
-                                                    <p><a href="#">Aahardelivery@email.com</a></p>
+                                                    <p><a href="#">FoodFactory@email.com</a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -204,8 +182,6 @@ $items_nb=$array[1];
                             </div>
                         </div>
                         <!-- End Single Footer -->
-                        <!-- Start Single Footer -->
-                        
                         <!-- Start Single Footer -->
                         <div class="col-md-6 col-lg-6 col-sm-12 md--mt--40 sm--mt--40">
                             <div class="footer">

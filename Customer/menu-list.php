@@ -42,7 +42,7 @@ $items_nb=$array[1];
                         <div class="col-lg-2 col-sm-4 col-md-6 order-1 order-lg-1">
                             <div class="logo">
                             <a href="index.php">
-                                    <img src="images/logo/foody.png" alt="logo images">
+                                    <img src="images/logo/foody.png" alt="logo images" class="img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -54,7 +54,6 @@ $items_nb=$array[1];
                                         <li><a href="menu-list.php">Menu</a></li>
                                         <li><a href="cart.php">Cart</a></li>
                                         <li><a href="ordering_history.php">Ordering History</a></li>
-                                        <li><a href="about-us.html">About</a></li>
                                     </ul>
                                 </nav> 
                             </div>
@@ -88,12 +87,7 @@ $items_nb=$array[1];
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">menu List view</h2>
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.html">Home</a>
-                                  <span class="brd-separetor"><i class="zmdi zmdi-long-arrow-right"></i></span>
-                                  <span class="breadcrumb-item active">menu List view</span>
-                                </nav>
+                                <h2 class="bradcaump-title" style="color:white;">Menu List view</h2>
                             </div>
                         </div>
                     </div>
@@ -117,7 +111,7 @@ $items_nb=$array[1];
                                 <div class="single__food__list d-flex wow fadeInUp">
                                     <div class="food__list__thumb">
                                         <a href="menu-details.php?id='.$data['pid'].'">
-                                            <img src="images/menu-list/'.$data['file'].'" alt="list food images">
+                                            <img src="images/menu-list/'.$data['file'].'" alt="list food images class="img-fluid">
                                         </a>
                                     </div>
                                     <div class="food__list__inner d-flex align-items-center justify-content-between">
@@ -146,8 +140,8 @@ $items_nb=$array[1];
                     <div class="col-lg-12">
                         <ul class="food__pagination d-flex justify-content-center align-items-center mt--130">
                             <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li ><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#">4</a></li>
                             <li><a href="#">5</a></li>

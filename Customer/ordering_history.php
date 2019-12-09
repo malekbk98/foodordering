@@ -42,7 +42,7 @@ $items_nb=$array[1];
                         <div class="col-lg-2 col-sm-4 col-md-6 order-1 order-lg-1">
                             <div class="logo">
                             <a href="index.php">
-                                    <img src="images/logo/foody.png" alt="logo images">
+                                    <img src="images/logo/foody.png" alt="logo images" class="img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -54,7 +54,6 @@ $items_nb=$array[1];
                                         <li><a href="menu-list.php">Menu</a></li>
                                         <li><a href="cart.php">Cart</a></li>
                                         <li><a href="ordering_history.php">Ordering History</a></li>
-                                        <li><a href="about-us.html">About</a></li>
                                     </ul>
                                 </nav>                                
                             </div>

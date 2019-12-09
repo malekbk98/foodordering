@@ -41,7 +41,7 @@ $items_nb=$array[1];
                         <div class="col-lg-2 col-sm-4 col-md-6 order-1 order-lg-1">
                             <div class="logo">
                             <a href="index.php">
-                                    <img src="images/logo/foody.png" alt="logo images">
+                                    <img src="images/logo/foody.png" alt="logo images" class="img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -88,12 +88,7 @@ $items_nb=$array[1];
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">Menu Details</h2>
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.html">Home</a>
-                                  <span class="brd-separetor"><i class="zmdi zmdi-long-arrow-right"></i></span>
-                                  <span class="breadcrumb-item active">Menu Details</span>
-                                </nav>
+                                <h2 class="bradcaump-title" style="color:white;">Menu Details</h2>
                             </div>
                         </div>
                     </div>
