@@ -34,17 +34,6 @@ if (!empty($_GET['id'])){
     $id=$_SESSION["id"];
 }
 
-$req = $conx->prepare("SELECT * FROM employee where eid=:param_id");
-$req->bindParam(':param_id',$id);
-$req->execute();
-$data = $req->fetch();
-$name= $data['name'];
-$email= $data['email'];
-$phone= $data['phone'];
-$password= $data['pwd'];
-$position= $data['position'];
-$vehicle= $data['vid'];
-$file=$data['pic'];
 
 ?>
 
@@ -155,7 +144,18 @@ $file=$data['pic'];
                                 </div>
                             </div>
                         </div>
+                        <?php
+                        $req=$employee->readEmpById($id);
+                        $data = $req->fetch();
+                        $name= $data['name'];
+                        $email= $data['email'];
+                        $phone= $data['phone'];
+                        $password= $data['pwd'];
+                        $position= $data['position'];
+                        $vehicle= $data['vid'];
+                        $file=$data['pic'];
 
+?>
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
                                 <div class="card">
@@ -190,6 +190,7 @@ $file=$data['pic'];
                                             <div class="card-body">
                                                 <div class="profiletimeline mt-0">
                                                     <?php
+                                                    include 'dbconnexion.php';
                                                       $req1= $conx->query('SELECT * From processing where eid=2');
                                                       while($data1 = $req1->fetch()){ 
                                                           $caid=$data1['caid'];

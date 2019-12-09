@@ -186,10 +186,6 @@
                 
                                                     $req= $conx->query('SELECT * From orders r,cart c where r.caid=c.caid and status=2 and oid ');
                                                     while($data = $req->fetch()){
-                                                       $req2= $conx->query('SELECT * From processing p,cart c where p.caid=c.caid and status=2 ');
-                                                       while($data2 = $req2->fetch()){
-                                                           $req3= $conx->query('SELECT * From customer t,cart c where t.cid=c.cid and status=2 ');
-                                                           while($data3 = $req3->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['oid'].'</td>';
                                                         echo '<td>'.$data['qunt'].'</td>';
@@ -197,12 +193,14 @@
                                                             case 0: $status="Waiting";break;
                                                             case 1: $status="Accepted";break;
                                                             case 2: $status="Completed";break;
+                                                            case 3: $status="Delivered";break;
+
                                                         }
                                                         switch ($data['status']){
                                                             case 0: $color="orange";break;
                                                             case 1: $color="blue";break;
                                                             case 2: $color="green";break;
-
+                                                            case 3: $color="green";break;
                                                         }
                                                         echo '<td>'.$status.'</td>';
                                                         echo '<td><div class="p-status bg-'.$color.' mr-10"></div></td>';
@@ -215,8 +213,7 @@
                                                         echo '<td><a href="accept_order.php?id='.$data['oid'].'"><button class="btn btn-success glyphicon glyphicon-edit">Accept</button></a></td>';
                                                         echo '<td><a href="delete_order.php?id='.$data['oid'].'"><button class="btn btn-danger">Done</button></a></td>';
                                                         echo '</tr>';
-                                                    }
-                                                }
+                            
                                             }
                                         
                                                 ?>

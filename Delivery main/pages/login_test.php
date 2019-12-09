@@ -17,32 +17,19 @@
             goto error;
         }
 
-
-    $req= $conx->prepare("SELECT eid,email,pwd,position FROM employee WHERE email=:param_email");
-            $req->bindParam(':param_email',$email);
-            $req->execute();
-            if ($req->rowCount()==1){
-                $data = $req->fetch();
-                session_start();
-                $_SESSION["log"]="";
-                    if($data['position']=="Dilevery"){
-                        if($data['pwd']==$pwd){
-							header("Location: ../index.php");
-                            $_SESSION["log"]=$data['eid'];
-                            exit();
-                        }else{
-                            $pwd_error="Wrong Password";
-                        }
-                    }else{
-                        $email_error="Enter a valid Email";
-                    }
-
-            }else{
-                $email_error="Enter a valid Email";}
-            }
-            
+        $dilevery = new dilevery;
+        $auth = $dilevery->login($email, $pwd);
+        if($auth === false)
+        {
+            $auth_error = 'Incorrect Email or Password!';
+            echo 'ok';
+        } else {
+            session_start();
+            $_SESSION['log'] = $auth['eid'];
+            header("Location: ../index.php");
+        }
+    }
                 error:
-                include 'login.phtml';
-                
+                include 'login.php';
 
 ?>
