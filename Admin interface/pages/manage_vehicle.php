@@ -177,10 +177,7 @@ include 'check_session.php';
                                                 </thead>
                                                 <tbody>
                                                     <?php      
-                                                    // header("Refresh:20"); Refresh page each 20s to show any changes.
-                                                   
-                                                    include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From vehicle');
+                                                    $req=$admin->readAllVehicle();
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['vid'].'</td>';

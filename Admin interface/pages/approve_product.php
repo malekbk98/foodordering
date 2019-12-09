@@ -1,7 +1,5 @@
 <?php
 include 'check_session.php';
-include 'classes/admin.class.php';  
-$admin=new admin;
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -163,7 +161,7 @@ $admin=new admin;
                             <div class="col-xl-12"> 
                                 <div class="card table-card">
                                     <div class="card-header">
-                                        <h3>Empolyee List</h3>
+                                        <h3>Pending Product List</h3>
                                     </div>
                                     <div class="card-block">
                                         <div class="table-responsive">

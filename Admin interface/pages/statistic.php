@@ -1,19 +1,22 @@
 <?php
-$total_order=0;
-$income=0;
-$nb_customer=0;
+include 'classes/admin.class.php';  
+$admin=new admin;
+$result=$admin->TotalOrdInc();
+$customer= $admin->readAllCust();
+$employee= $admin->readAllCust();
+
+
+
+$total_order=$result[0];
+$income=[1];
+$nb_customer=$customers->rowCount();
 $nb_employee=0;
 $nb_vehicle=0;   
 $nb_product=0;   
 $cn_customer=0;    
 $cn_employee=0;  
 
-$req= $conx->query('SELECT * From orders r ,product p where status=3 and r.pid=p.pid');
-while($da = $req->fetch()){
-$total_order++;   
-$income+= $da['qunt']*$da['price'];
-                                                 
-}
+        
 
 $req= $conx->query('SELECT * From customer');
 while($da = $req->fetch()){

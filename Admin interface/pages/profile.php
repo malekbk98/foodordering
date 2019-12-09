@@ -33,8 +33,6 @@ if (!empty($_GET['id'])){
     $id=$_SESSION["id"];
 }
 
-include 'classes/admin.class.php';  
-$admin=new admin;
 $req=$admin->readEmpById($id);
 $data = $req->fetch();
 $name= $data['name'];

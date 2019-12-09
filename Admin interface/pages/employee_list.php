@@ -179,8 +179,6 @@ include 'check_session.php';
                                                 </thead>
                                                 <tbody>
                                                     <?php      
-                                                        include 'classes/admin.class.php';  
-                                                        $admin=new admin;
                                                         $req=$admin->readAllEmp();
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';

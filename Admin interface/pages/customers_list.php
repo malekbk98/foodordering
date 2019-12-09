@@ -180,8 +180,7 @@ include 'check_session.php';
                                                 </thead>
                                                 <tbody>
                                                     <?php      
-                                                    // header("Refresh:20"); Refresh page each 20s to show any changes.
-                                                    $req= $conx->query('SELECT * From customer');
+                                                    $req=$admin->readAllCust();
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['cid'].'</td>';

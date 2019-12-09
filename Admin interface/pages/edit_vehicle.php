@@ -34,10 +34,7 @@ if (!empty($_GET['id'])){
 }else{
     $id=$_SESSION["id"];
 }
-
-$req = $conx->prepare("SELECT * FROM vehicle where vid=:param_id");
-$req->bindParam(':param_id',$id);
-$req->execute();
+$req=$admin->readVehicleById($id);
 $data = $req->fetch();
 $vnum= $data['vnum'];
 $brand= $data['brand'];
