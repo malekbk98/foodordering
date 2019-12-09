@@ -186,7 +186,7 @@ class admin
          }
      }
 
-     //Read Product
+     //Read All Product
      public function readPro($status){
         try {
              $query=$this->pdo->prepare("SELECT * FROM product where valid=:param_valid");
@@ -286,9 +286,42 @@ class admin
         return array($total_order, $income);
     }
 
+
+    //Return Total Customer and Online Customer
+    public function TotalCustomer(){
+        $nb_customer=0;
+        $cn_customer=0; 
+        try {
+            $query=$this->readAllCust();
+            $nb_customer=$query->rowCount();
+            while($data = $query->fetch()){
+                if ($data['status']==1){
+                    $cn_customer++;
+                }
+            }
+            return array($nb_customer, $cn_customer);
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
      //Return Total Employee and Online Employee
      public function TotalEmployee(){
-         
+        $nb_employee=0;
+        $cn_employee=0; 
+        try {
+            $query=$this->readAllEmp();
+            $nb_employee=$query->rowCount();
+            while($data = $query->fetch()){
+                if ($data['status']==1){
+                    $cn_employee++;
+                }
+            }
+            return array($nb_employee, $cn_employee);
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+
      }
 
 

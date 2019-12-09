@@ -1,48 +1,20 @@
 <?php
-include 'classes/admin.class.php';  
-$admin=new admin;
-$result=$admin->TotalOrdInc();
-$customer= $admin->readAllCust();
-$employee= $admin->readAllCust();
 
+$result=$admin->TotalOrdInc();
+$customer=$admin->TotalCustomer();
+$employee=$admin->TotalEmployee();
+$vehicle=$admin->readAllVehicle();
+$product=$admin->readPro("availbel");
 
 
 $total_order=$result[0];
-$income=[1];
-$nb_customer=$customers->rowCount();
-$nb_employee=0;
-$nb_vehicle=0;   
-$nb_product=0;   
-$cn_customer=0;    
-$cn_employee=0;  
-
-        
-
-$req= $conx->query('SELECT * From customer');
-while($da = $req->fetch()){
-$nb_customer++;  
-if ($da['status']==1){
-    $cn_customer++;
-}                                              
-}
-
-$req= $conx->query('SELECT * From employee');
-while($da = $req->fetch()){
-$nb_employee++;
-if ($da['status']!=0){
-    $cn_employee++;
-}  
-}
-
-$req= $conx->query('SELECT * From vehicle');
-while($da = $req->fetch()){
-$nb_vehicle++;                                                
-}
-
-$req= $conx->query('SELECT * From product');
-while($da = $req->fetch()){
-$nb_product++;                                          
-}
+$income=$result[1];
+$nb_customer=$customer[0];
+$cn_customer=$customer[1];  
+$nb_employee=$employee[0];
+$cn_employee=$employee[1];
+$nb_vehicle=$vehicle->rowCount();   
+$nb_product=$product->rowCount();
 
 
 
