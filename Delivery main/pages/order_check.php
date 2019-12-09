@@ -165,7 +165,7 @@
                             <div class="col-xl-12"> 
                                 <div class="card table-card">
                                     <div class="card-header">
-                                        <h3>Order List</h3>
+                                        <h3>Order Check</h3>
                                     </div>
                                     <div class="card-block">
                                         <div class="table-responsive">

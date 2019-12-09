@@ -26,6 +26,7 @@ include 'start_session.php';
 
     <body>
     <?php  
+    
 if (!empty($_GET['id'])){
     $id=$id=$_GET['id'];
     $_SESSION["id"]=$id;
@@ -127,15 +128,9 @@ $file=$data['pic'];
                                 <div class="nav-item ">
                                     <a href="../index.php"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                                 </div>
-                                <div class="nav-lavel">Manage Employees</div>
+                                <div class="nav-lavel">Manage Delivery</div>
                                 <div class="nav-item">
-                                    <a href="employee_product.php" class="menu-item">Add New Product</a>
-                                </div>
-                                <div class="nav-item active">
-                                    <a href="employee_order.php" class="menu-item">Orders List</a>
-                                </div>
-                                <div class="nav-item">
-                                    <a href="product_modif.php" class="menu-item">Modif Product</a>
+                                    <a href="pages/order_check.php" class="menu-item">Order Check</a>
                                 </div>
                         </nav>
                         </div>
