@@ -113,8 +113,8 @@ if (!empty($_GET['id'])){
                             $name= $data['name'];
                             $description= $data['description'];
                             $price= $data['price'];
-                            $qunt= $data['qunt'];
                             $valid= $data['valid'];
+                            $type= $data['type'];
                             $file= $data['file'];
                         ?>
                             <span class="text">ThemeKit</span>
@@ -190,8 +190,8 @@ if (!empty($_GET['id'])){
                                                         <input type="text" value="<?php echo $price;?>" class="form-control" name="price" id="price" required="">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="qunt">Availbel Quantity</label>
-                                                        <input type="text" value="<?php echo $qunt;?>" id="qunt" name="qunt" class="form-control" required="">
+                                                        <label for="type">Type</label>
+                                                        <input type="text" value="<?php echo $type;?>" id="type" name="type" class="form-control" required="">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="file">Update Picture</label><br>

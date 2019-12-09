@@ -42,7 +42,7 @@
             }
             
                 error:
-                include 'login.php';
+                include 'login.phtml';
                 
 
 ?>

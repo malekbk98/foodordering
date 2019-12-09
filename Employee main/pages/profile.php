@@ -34,18 +34,6 @@ if (!empty($_GET['id'])){
     $id=$_SESSION["id"];
 }
 
-$req = $conx->prepare("SELECT * FROM employee where eid=:param_id");
-$req->bindParam(':param_id',$id);
-$req->execute();
-$data = $req->fetch();
-$name= $data['name'];
-$email= $data['email'];
-$phone= $data['phone'];
-$password= $data['pwd'];
-$position= $data['position'];
-$vehicle= $data['vid'];
-$file=$data['pic'];
-
 ?>
 
         <div class="wrapper">
@@ -161,6 +149,17 @@ $file=$data['pic'];
                                 </div>
                             </div>
                         </div>
+                        <?php
+                            $req=$employee->readEmpById($id);
+                            $data = $req->fetch();
+                            $name= $data['name'];
+                            $email= $data['email'];
+                            $phone= $data['phone'];
+                            $password= $data['pwd'];
+                            $position= $data['position'];
+                            $vehicle= $data['vid'];
+                            $file=$data['pic'];
+                        ?>
 
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
@@ -196,53 +195,59 @@ $file=$data['pic'];
                                             <div class="card-body">
                                                 <div class="profiletimeline mt-0">
                                                     <?php
-                                                      $req1= $conx->query('SELECT * From processing where eid=2');
-                                                      while($data1 = $req1->fetch()){ 
-                                                          $caid=$data1['caid'];
-                                                        $req2= $conx->query("SELECT * From orders where caid='$caid'");
-                                                        while($data2 = $req2->fetch()){
-                                                            $pid=$data2['pid'];
-                                                            $req3= $conx->query("SELECT * From product where pid='$pid'");
-                                                            while($data3 = $req3->fetch()){ 
-                                                                echo '<div class="sl-item">
-                                                                <div class="sl-left"> <img src="../img/users/'.$file.'" alt="user" class="rounded-circle" /> </div>
-                                                                <div class="sl-right">
-                                                                <div> <a href="javascript:void(0)" class="link">'.$data3['name'].'</a><span class="sl-date">   '.$data2['date'].'</span>
-                                                                <div class="mt-20 row">
-                                                                    <div class="col-md-3 col-xs-12"><img src="../img/'.$data3['file'].'" alt="food" class="img-fluid rounded" /></div>
-                                                                    <div class="col-md-9 col-xs-12">
-                                                                    <div class="table-responsive">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Order ID</th>
-                                                        <th>Product ID</th>
-                                                        <th>Quantity</th>
-                                                        <th>Cost</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th>'.$data2['oid'].'</th>
-                                                        <td>'.$pid.'</td>
-                                                        <td>'.$data2['qunt'].'</td>
-                                                        <td>'.$data2['qunt']*$data3['price'].'</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr>';
-                                                                
-                                                        }
-                                                        }
-                                                      }
-                        
-                                                    ?>
+                                                        include 'dbconnexion.php';
+                                                         $req1= $conx->query("SELECT * From processing where eid='$id'");
+                                                         while($data1 = $req1->fetch()){ 
+                                                             $caid=$data1['caid'];
+                                                           $req2= $conx->query("SELECT * From orders where caid='$caid'");
+                                                           while($data2 = $req2->fetch()){
+                                                               if($position=="Employee"){
+                                                                               $pid=$data2['pid'];
+                                                                               $req3= $conx->query("SELECT * From product where pid='$pid'");
+                                                                               while($data3 = $req3->fetch()){ 
+                                                                                   echo '<div class="sl-item">
+                                                                                   <div class="sl-left"> <img src="../img/users/'.$file.'" alt="user" class="rounded-circle" /> </div>
+                                                                                   <div class="sl-right">
+                                                                                   <div> <a href="javascript:void(0)" class="link">'.$data3['name'].'</a><span class="sl-date">   '.$data2['date'].'</span>
+                                                                                   <div class="mt-20 row">
+                                                                                       <div class="col-md-3 col-xs-12"><img src="../img/'.$data3['file'].'" alt="food" class="img-fluid rounded" /></div>
+                                                                                       <div class="col-md-9 col-xs-12">
+                                                                                       <div class="table-responsive">
+                                                               <table class="table table-hover">
+                                                                   <thead>
+                                                                       <tr>
+                                                                           <th>Order ID</th>
+                                                                           <th>Product ID</th>
+                                                                           <th>Quantity</th>
+                                                                           <th>Cost</th>
+                                                                       </tr>
+                                                                   </thead>
+                                                                   <tbody>
+                                                                       <tr>
+                                                                           <th>'.$data2['oid'].'</th>
+                                                                           <td>'.$pid.'</td>
+                                                                           <td>'.$data2['qunt'].'</td>
+                                                                           <td>'.$data2['qunt']*$data3['price'].'</td>
+                                                                       </tr>
+                                                                   </tbody>
+                                                               </table>
+                                                           </div>
+                                                                                       </div>
+                                                                                   </div>
+                                                                               </div>
+                                                                           </div>
+                                                                       </div>
+                                                                       <hr>';
+                                                                                   
+                                                           }
+                                                       }else{
+                                                           
+   
+                                                       }
+                                                       }
+                                                         }
+                           
+                                                       ?>
                                                 </div>
                                             </div>
                                         </div>

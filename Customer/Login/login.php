@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
         session_start();
         $_SESSION['firstname'] = $auth['firstname'];
         $_SESSION['email'] = $auth['email'];
-        header('location: login.php?msg=logindone');
+        header('location: ../index.php');
     }
 }
 displayonly:

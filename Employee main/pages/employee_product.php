@@ -174,8 +174,8 @@ include 'start_session.php';
                                                         <input type="text" class="form-control" id="exampleInputValid3" name="valid" placeholder="Valid" hidden>
                                                     </div>
                                             <div class="form-group">
-                                                <label for="exampleInputQuantity4">Quantity</label>
-                                                <input type="text" class="form-control" id="exampleInputQuantity4" name="qunt" placeholder="Quantity">
+                                                <label for="exampleInputQuantity4">Type</label>
+                                                <input type="text" class="form-control" id="exampleInputQuantity4" name="type" placeholder="Type">
                                             </div>
                                             
                                             <div class="form-group">
