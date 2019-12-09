@@ -173,7 +173,7 @@ include 'start_session.php';
                                                     // header("Refresh:20"); Refresh page each 20s to show any changes.
                                                    
                                                     include 'dbconnexion.php';
-                                                    $req= $conx->query('SELECT * From product where valid!="pending"');
+                                                    $req=$employee->readProd("availbel");
                                                     while($data = $req->fetch()){
                                                         echo '<tr>';
                                                         echo '<td>'.$data['pid'].'</td>';

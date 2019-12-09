@@ -188,9 +188,8 @@ include 'start_session.php';
                                                         }
                                                         echo '<td>'.$status.'</td>';
                                                         echo '<td><div class="p-status bg-'.$color.' mr-10"></div></td>';
-                                                        $req2 = $conx->prepare("select * FROM product WHERE pid=:param_pid");
-                                                        $req2->bindParam(':param_pid',$data['pid']);
-                                                        $req2->execute();
+                                                        $readallprod = new employee;
+                                                        $readallprod->readallprod($id);
                                                         $data2= $req2->fetch();
                                                         echo '<td>'.$data2['name'].':'.$data2['description'].'</td>';
                                                         echo '<td>'.$data['date'].'</td>';

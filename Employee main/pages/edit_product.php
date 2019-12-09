@@ -37,9 +37,9 @@ if (!empty($_GET['id'])){
     $id=$_SESSION["id"];
 }
 
-$req = $conx->prepare("SELECT * FROM product where pid=:param_id");
-$req->bindParam(':param_id',$id);
-$req->execute();
+include 'classes/employee.class.php';  
+$readprodbyid = new employee;
+$readprodbyid->readprodbyid($id);
 $data = $req->fetch();
 $name= $data['name'];
 $description= $data['description'];

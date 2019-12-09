@@ -34,9 +34,9 @@ if (!empty($_GET['id'])){
     $id=$_SESSION["id"];
 }
 
-$req = $conx->prepare("SELECT * FROM employee where eid=:param_id");
-$req->bindParam(':param_id',$id);
-$req->execute();
+include 'classes/employee.class.php';  
+$employee=new employee;
+$req=$employee->readEmpFromId($id);
 $data = $req->fetch();
 $name= $data['name'];
 $email= $data['email'];

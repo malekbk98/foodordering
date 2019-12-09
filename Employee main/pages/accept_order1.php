@@ -2,8 +2,8 @@
        $id=$_GET['id'];
        $status=$_GET['status'];
        include 'dbconnexion.php'; 
-              $req = $conx->prepare("UPDATE orders SET status=1 WHERE oid=:param_oid");
-              $req->bindParam(':param_oid',$id);
-       $req->execute();
+       include 'classes/employee.class.php';  
+       $Acceptorderprob = new employee;
+       $Acceptorderprob->Acceptorderprob($id);
        header("Location: employee_order.php?msg=OrderAccepted");
 ?>       

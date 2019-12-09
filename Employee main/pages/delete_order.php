@@ -1,8 +1,8 @@
 <?php
  $id=$_GET['id'];
         include 'dbconnexion.php';
-        $req = $conx->prepare("DELETE FROM orders WHERE oid=:param_oid");
-        $req->bindParam(':param_oid',$id);
-        $req->execute();
+        include 'classes/employee.class.php';  
+        $Deleteorder = new employee;
+        $Deleteorder->Deleteorder($id);
         header("Location: employee_order.php?msg=OrderDeleted");
 ?>
