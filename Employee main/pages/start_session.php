@@ -5,7 +5,6 @@ $employee=new employee;
 if(!isset($_SESSION['log'])){
   header("Location: 404.html");
 }else{
-  include 'dbconnexion.php';
   $id=$_SESSION['log'];
   $req=$employee->readEmpById($id);
   $data = $req->fetch();

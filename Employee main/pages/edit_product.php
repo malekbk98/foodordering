@@ -37,17 +37,6 @@ if (!empty($_GET['id'])){
     $id=$_SESSION["id"];
 }
 
-include 'classes/employee.class.php';  
-$readprodbyid = new employee;
-$readprodbyid->readprodbyid($id);
-$data = $req->fetch();
-$name= $data['name'];
-$description= $data['description'];
-$price= $data['price'];
-$qunt= $data['qunt'];
-$valid= $data['valid'];
-$file= $data['file'];
-
 ?>
 
         <div class="wrapper">
@@ -118,6 +107,16 @@ $file= $data['file'];
                             <div class="logo-img">
                                <img src="../src/img/brand-white.svg" class="header-brand-img" alt="lavalite"> 
                             </div>
+                            <?php
+                            $req=$employee->readprodbyid($id);
+                            $data = $req->fetch();
+                            $name= $data['name'];
+                            $description= $data['description'];
+                            $price= $data['price'];
+                            $qunt= $data['qunt'];
+                            $valid= $data['valid'];
+                            $file= $data['file'];
+                        ?>
                             <span class="text">ThemeKit</span>
                         </a>
                         <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>

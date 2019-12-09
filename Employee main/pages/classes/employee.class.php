@@ -9,7 +9,7 @@
         }
 
         public function login($email,$password)
-        {
+        {   
             $pos="Employee";
             try {
                     $req= $this->conx->prepare("SELECT * FROM employee WHERE email=:param_email and position=:pos");
@@ -17,7 +17,7 @@
                     $req->bindparam(":pos", $pos);
                     $req->execute();
                     $user = $req->fetch();
-                    if (password_verify($password,$user['pwd'])) {
+                    if ($password==$user['pwd']) {
                     return $user;
                     }else{
                     return false;
@@ -35,7 +35,7 @@
                 $query = $this->conx->prepare($sql);
                 $query->bindparam(":name", $name);
                 $query->execute();
-        if ($req->rowCount()==0){
+        if ($query->rowCount()==0){
             try {
                 $req=$this->conx->prepare('INSERT INTO product (name, description, price, qunt, file) VALUES (:param_name,:param_description,:param_price,:param_qunt,:param_file)');
                 $req->bindParam(':param_name', $name); 
@@ -71,9 +71,9 @@
             try {
                 if (!empty($pic)){
                     $req = $this->conx->prepare("UPDATE product SET name=:param_name, description=:param_description, price=:param_price, valid=:param_valid, qunt=:param_qunt, file=:param_pic WHERE pid=:param_id");
-                    $req->bindParam(':param_pic',$pic);
+                    
                     }else{
-                    $req = $conx->prepare("UPDATE product SET name=:param_name, description=:param_description, price=:param_price, valid=:param_valid, qunt=:param_qunt WHERE pid=:param_id");
+                    $req = $this->conx->prepare("UPDATE product SET name=:param_name, description=:param_description, price=:param_price, valid=:param_valid, qunt=:param_qunt WHERE pid=:param_id");
                     }
                     $req->bindParam(':param_name',$name);
                     $req->bindParam(':param_description',$description);
@@ -115,7 +115,7 @@
 
         public function Deleteorder($id){
             try{
-            $req = $this->$conx->prepare("DELETE FROM orders WHERE oid=:param_oid");
+            $req = $this->conx->prepare("DELETE FROM orders WHERE oid=:param_oid");
             $req->bindParam(':param_oid',$id);
             $req->execute();
         } catch (PDOExeption $e) {
@@ -151,27 +151,6 @@
 
         public function readallprod($id){
             try{
-                $req2 = $this->conx->prepare("select * FROM product WHERE pid=:param_pid");
-                $req2->bindParam(':param_pid',$data['pid']);
-                $req2->execute();
-                return $req2;
-        } catch (PDOExeption $e) {
-            echo $e->getMessage();
-        }
-        }
-
-        public function readallprod($id){
-            try{
-                $req = $this->conx->prepare("SELECT * From orders where oid=:param_oid");
-                $req->bindParam(':param_pid',$oid);
-                $req->execute();
-                return $req;
-        } catch (PDOExeption $e) {
-            echo $e->getMessage();
-        }
-        }
-        public function readallprod($id){
-            try{
                 $req = $this->conx->prepare("SELECT * From orders where oid=:param_oid");
                 $req->bindParam(':param_pid',$oid);
                 $req->execute();
@@ -192,7 +171,7 @@
         }
         public function readprodbyid($id){
             try {
-                $req = $conx->prepare("SELECT * FROM product where pid=:param_id");
+                $req = $this->conx->prepare("SELECT * FROM product where pid=:param_id");
                 $req->bindParam(':param_id',$id);
                 $req->execute();
                 return $req;

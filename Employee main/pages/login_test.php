@@ -20,6 +20,7 @@
         if($auth === false)
         {
             $auth_error = 'Incorrect Email or Password!';
+            echo 'ok';
         } else {
             session_start();
             $_SESSION['log'] = $auth['eid'];

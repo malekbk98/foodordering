@@ -7,7 +7,7 @@
         $valid= $_POST['valid'];
         $pic= $_POST['pic'];
         include 'classes/employee.class.php';
-        $updateproduit=new employee;
-        $updateproduit->updateproduit($name,$description,$price,$valid,$qunt,$file);
+        $updatepro=new employee;
+        $req=$updatepro->updateproduit($name,$description,$price,$valid,$qunt,$file);
         header("Location: product_modif.php");
 ?>
