@@ -10,7 +10,7 @@
         
         
         $admin = new admin;
-        $auth = $admin->AddEmployee($name,$email,$pwd,$phone,$position,$pic);
+        $auth = $admin->AddEmployee($name,$email,password_hash($pwd,PASSWORD_DEFAULT),$phone,$position,$pic);
        if($auth == true){
                 header("Location: employee_list.php?msg=Add successfully");
         }else{

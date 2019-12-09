@@ -12,13 +12,14 @@ class Customer
         $this->pdo = $dbconn->connectDB();
     }
 
-    public function register($name, $email, $password, $phone, $adress, $pic)
+    public function register($fname,$lname,$email,$password,$phone,$adress,$pic)
     {
         try {
-            $sql = "INSERT INTO customer(name,email,password,phone,adress,pic)
-                    VALUES (:name,:email,:password,:phone, :adr, :pic";
+            $sql = "INSERT INTO customer(first_name,last_name,email,password,phone,adress,pic)
+                    VALUES (:fname,:lname,:email,:password,:phone, :adr, :pic";
             $query = $this->pdo->prepare($sql);
-            $query->bindparam(":name", $name);
+            $query->bindparam(":fname", $fname);
+            $query->bindparam(":lname", $lname);
             $query->bindparam(":email", $email);
             $query->bindparam(":password", $password);
             $query->bindparam(":phone", $phone);

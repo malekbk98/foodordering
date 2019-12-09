@@ -32,7 +32,7 @@ include 'classes/admin.class.php';
     }
  
                 error:
-                include 'check_signin.php';
+                include 'check_signin.phtml';
                 
 
 ?>
