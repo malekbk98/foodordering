@@ -19,16 +19,15 @@
                     $req->bindparam(":pos", $pos);
                     $req->execute();
                     $user = $req->fetch();
-                    if ($password==$user['pwd']) {
-                    return $user;
-                    }else{
-                    return false;
+                    if (password_verify($password, $user['pwd'])){
+                        return $user;
+                    } else {
+                        return false;
                     }
-            } catch (PDOExeption $e) {
-                echo $e->getMessage();
+                } catch (PDOException $ex) {
+                    echo $ex->getMessage();
+                }
             }
-
-        }
         
         //create product
         public function createproduct($name,$description,$price,$qunt,$file)
